@@ -1,0 +1,22 @@
+<svg version="1.1" id="Bar" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+  viewBox="0 0 200px 5px" xml:space="preserve">
+<rect fill="#00cdfe" width="200" height="5" transform="translateX(0)" rx="2">
+</rect>
+<rect fill="#f00" width="10" height="5px" rx="2">
+<animate
+    attributeType="XML"
+    attributeName="width"
+    values="10;30;50;30;10"
+    dur="3s"
+    repeatCount="indefinite"
+    />
+<animateTransform
+    attributeType="XML"
+    attributeName="transform" type="translate"
+    values="20 0; 150 0; 50 0; 20 0"
+    begin="0" dur="5s"
+    repeatCount="indefinite"
+    />
+</rect>
+</svg>
+
