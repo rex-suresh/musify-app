@@ -3,14 +3,14 @@ type ArtistInfo = {
   name: string;
 };
 
-export type AlbumCardProps = {
+export interface AlbumCardProps {
   id: string;
   name: string;
   artist: ArtistInfo;
   label: string;
   explicit: boolean;
   image: string;
-};
+}
 
 export type AlbumInfoParams = Pick<
   AlbumCardProps,

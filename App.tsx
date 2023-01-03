@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { HomeScreen } from './src/UI/screens/HomeScreen';
 
 const App = () => (
   <View style={styles.screen}>
     <View style={styles.box}>
-      <Text>Apple</Text>
+      <HomeScreen />
+      <Text>Atleast</Text>
     </View>
   </View>
 );

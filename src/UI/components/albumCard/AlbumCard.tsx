@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Image, View } from 'react-native';
-import { AlbumCardProps } from './AlbumCard.types';
+import { Image, Text, View } from 'react-native';
+import { AlbumCardProps, AlbumInfoParams } from './AlbumCard.types';
 
 const ALBUM_IMAGE_DEF = './src/UI/components/image/album-default.jpg';
 
@@ -10,7 +10,7 @@ const getImageUri = async (url: string) => {
 };
 
 const AlbumImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
-  const [imageUri, setImage] = useState('def');
+  const [imageUri, setImage] = useState('');
 
   useEffect(() => {
     const imageSet = async () => {
@@ -24,28 +24,33 @@ const AlbumImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
     <View>
       <Image
         key={id.concat('-image')}
-        source={{ uri: imageUri }}
-        defaultSource={{ uri: ALBUM_IMAGE_DEF }}
+        source={{ uri: url }}
+        // eslint-disable-next-line global-require
+        defaultSource={require(ALBUM_IMAGE_DEF)}
       />
     </View>
   );
 };
 
-const AlbumInfo = ({ info }) => {};
-
-export const AlbumCard = ({
-  id,
-  name,
-  artist,
-  image,
-  label,
-  explicit,
-}: AlbumCardProps) => (
+const AlbumInfo = ({ name, artist }: AlbumInfoParams) => (
   <View>
-    <AlbumImage
-      url={image}
-      id={id}
-    />
-    <AlbumInfo info={{ name, artist, label, explicit }} />
+    <Text>{name}</Text>
+    <Text>{artist.name}</Text>
   </View>
 );
+
+export const AlbumCard = (props: AlbumCardProps) => {
+  const { id, name, artist, image, label, explicit } = props as AlbumCardProps;
+
+  console.log(props);
+
+  return (
+    <View>
+      <AlbumImage
+        url={image}
+        id={id}
+      />
+      <AlbumInfo {...{ name, artist, label, explicit }} />
+    </View>
+  );
+};
