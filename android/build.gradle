@@ -1,7 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
-
 buildscript {
     ext {
         buildToolsVersion = "31.0.0"
