@@ -2,8 +2,6 @@ import { AlbumCardProps } from '../../UI/components/albumCard/AlbumCard.types';
 import { get } from '../request';
 import { routes } from '../routes';
 
-// const mapToAlbumCardProps = () => {};
-
 export const useFetchAlbumData = async (): Promise<
   AlbumCardProps[] | undefined
 > => {
@@ -11,7 +9,7 @@ export const useFetchAlbumData = async (): Promise<
     if (res?.data) {
       return res.data;
     }
-    console.log(res?.data);
+    console.error('Error Occurred fetching Album data !!!');
   });
 
   return data?.albums || [];

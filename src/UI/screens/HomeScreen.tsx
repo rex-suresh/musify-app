@@ -1,38 +1,46 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { useFetchAlbumData } from '../../APIservice/album/fetchAlbumData';
+import { useFetchArtistData } from '../../APIservice/artist/fetchArtistData';
 import { AlbumCardProps } from '../components/albumCard/AlbumCard.types';
 import { AlbumCardFlatList } from '../components/albumCard/AlbumCardList';
+import { ArtistCardProps } from '../components/artistCard/ArtistCard.types';
+import { ArtistCardFlatList } from '../components/artistCard/ArtistCardList';
+import { PageTitle } from '../components/common/Titles';
 
 export const HomeScreen = () => {
   const [albums, setAlbums] = useState([] as AlbumCardProps[]);
+  const [artists, setArtists] = useState([] as ArtistCardProps[]);
 
   useEffect(() => {
-    const fetchAlbums = async () => {
-      // eslint-disable-next-line react-hooks/rules-of-hooks
+    const fetchData = async () => {
       setAlbums((await useFetchAlbumData()) || []);
+      setArtists((await useFetchArtistData()) || []);
     };
 
-    fetchAlbums();
+    fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log(albums);
-  }, [albums]);
-
   return (
-    <View style={styles.albumSection}>
-      <AlbumCardFlatList
-        title="Albums"
-        albums={albums}
-      />
+    <View style={styles.homeScreen}>
+      <ScrollView>
+        <PageTitle title="Home" />
+        <AlbumCardFlatList
+          title="Top Albums"
+          albums={albums}
+        />
+        <ArtistCardFlatList
+          title="Top Artists"
+          artists={artists}
+        />
+      </ScrollView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  albumSection: {
-    height: 300,
-    width: '100%',
+  homeScreen: {
+    height: '100%',
   },
 });

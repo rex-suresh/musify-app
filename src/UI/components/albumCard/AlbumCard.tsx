@@ -1,32 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { colors } from '../../colors';
+import { sizes } from '../../fontSizes';
+import { TitleText } from '../common/Titles';
 import { AlbumCardProps, AlbumInfoParams } from './AlbumCard.types';
 
-const ALBUM_IMAGE_DEF = './src/UI/components/image/album-default.jpg';
-
-const getImageUri = async (url: string) => {
-  const imageReq = await fetch(url);
-  return URL.createObjectURL(await imageReq.blob());
-};
+const default_image = require('./images/album-default.jpg');
 
 const AlbumImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
-  const [imageUri, setImage] = useState('');
-
-  useEffect(() => {
-    const imageSet = async () => {
-      setImage(await getImageUri(url));
-    };
-
-    imageSet();
-  }, [url]);
-
   return (
     <View>
       <Image
         key={id.concat('-image')}
         source={{ uri: url }}
-        // eslint-disable-next-line global-require
-        defaultSource={require(ALBUM_IMAGE_DEF)}
+        progressiveRenderingEnabled={true}
+        style={styles.albumImage}
+        defaultSource={default_image}
       />
     </View>
   );
@@ -34,18 +23,22 @@ const AlbumImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
 
 const AlbumInfo = ({ name, artist }: AlbumInfoParams) => (
   <View>
-    <Text>{name}</Text>
-    <Text>{artist.name}</Text>
+    <TitleText
+      content={name}
+      style={styles.albumTitle}
+    />
+    <TitleText
+      content={artist.name}
+      style={styles.albumArtistTitle}
+    />
   </View>
 );
 
 export const AlbumCard = (props: AlbumCardProps) => {
-  const { id, name, artist, image, label, explicit } = props as AlbumCardProps;
-
-  console.log(props);
+  const { id, name, artist, image, label, explicit } = props;
 
   return (
-    <View>
+    <View style={styles.albumCard}>
       <AlbumImage
         url={image}
         id={id}
@@ -54,3 +47,30 @@ export const AlbumCard = (props: AlbumCardProps) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  albumCard: {
+    margin: 10,
+    maxWidth: 150,
+    maxHeight: 210,
+  },
+  albumImage: {
+    width: 150,
+    aspectRatio: 1,
+    // borderColor: colors.greyBd,
+    // borderWidth: 0.5,
+  },
+  albumTitle: {
+    color: colors.fontS,
+    fontSize: sizes.S,
+    padding: 2,
+    paddingTop: 8,
+    fontWeight: '500',
+  },
+  albumArtistTitle: {
+    color: colors.fontDim,
+    fontSize: sizes.XXS,
+    fontWeight: '300',
+    paddingLeft: 2,
+  },
+});

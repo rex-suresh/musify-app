@@ -1,6 +1,6 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
-import { SectionContentTitle } from '../common/Titles';
+import { StyleSheet } from 'react-native';
+import { ListSection } from '../common/ListSection';
 import { AlbumCard } from './AlbumCard';
 import { AlbumCardProps } from './AlbumCard.types';
 
@@ -11,20 +11,25 @@ export const AlbumCardFlatList = ({
   title: string;
   albums: AlbumCardProps[];
 }) => {
-  console.log(typeof albums);
-
   return (
-    <View>
-      <SectionContentTitle {...{ title }} />
-
-      <FlatList
-        data={albums}
-        renderItem={({ item }) => {
-          const data = item as AlbumCardProps;
-          return <AlbumCard {...data} />;
-        }}
-        horizontal={true}
-      />
-    </View>
+    <ListSection
+      title={title}
+      data={albums}
+      renderItem={({ item }) => {
+        const data = item as AlbumCardProps;
+        return <AlbumCard {...data} />;
+      }}
+      listStyle={styles.albumList}
+      sectionStyle={styles.albumSection}
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  albumList: {
+    height: 220,
+  },
+  albumSection: {
+    marginTop: 30,
+  },
+});

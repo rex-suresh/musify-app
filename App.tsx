@@ -1,25 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { HomeScreen } from './src/UI/screens/HomeScreen';
 
 const App = () => (
-  <View style={styles.screen}>
-    <View style={styles.box}>
+  <View>
+    <SafeAreaView style={styles.screen}>
+      <StatusBar
+        showHideTransition={'slide'}
+        barStyle={'light-content'}
+      />
       <HomeScreen />
-      <Text>Atleast</Text>
-    </View>
+    </SafeAreaView>
   </View>
 );
 
 const styles = StyleSheet.create({
   screen: {
-    justifyContent: 'center',
-    alignItems: 'center',
     height: '100%',
-  },
-  box: {
-    borderColor: 'black',
-    borderWidth: 1,
+    width: '100%',
+    backgroundColor: 'black',
   },
 });
 
