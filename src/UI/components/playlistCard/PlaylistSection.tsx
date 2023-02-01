@@ -1,39 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { useQuery } from 'react-query';
+import { StyleSheet } from 'react-native';
 import { topPlaylists } from '../../../APIservice/request';
-import { ListSection } from '../common/ListSection';
+import {
+  ListSectionWrapper,
+  ListSectionWrapperProps,
+} from '../common/ListSectionWrapper';
 import { PlaylistCard } from './PlaylistCard';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
+const PlaylistCardItem = ({ item }: { item: unknown }) => {
+  const props = item as PlaylistCardProps; // 🥲
+  return <PlaylistCard {...props} />;
+};
+
 export const PlaylistSection = () => {
-  const { isLoading, error, data } = useQuery('top-playlist', topPlaylists);
+  const playlistWrapperProps: ListSectionWrapperProps = {
+    title: 'Featured Playlists',
+    queryName: 'top-playlist',
+    itemCard: PlaylistCardItem,
+    query: topPlaylists,
+    listStyle: styles.playlistList,
+    sectionStyle: styles.playlistSection,
+  };
 
-  if (error) {
-    return <></>;
-  }
-
-  return isLoading ? (
-    <Text>Loading</Text>
-  ) : (
-    <ListSection
-      title="Featured Playlists"
-      data={data}
-      renderItem={({ item }) => {
-        const props = item as PlaylistCardProps;
-        return <PlaylistCard {...props} />;
-      }}
-      listStyle={styles.artistList}
-      sectionStyle={styles.artistSection}
-    />
-  );
+  return <ListSectionWrapper {...playlistWrapperProps} />;
 };
 
 const styles = StyleSheet.create({
-  artistList: {
+  playlistList: {
     height: 220,
   },
-  artistSection: {
+  playlistSection: {
     marginTop: 30,
   },
 });
