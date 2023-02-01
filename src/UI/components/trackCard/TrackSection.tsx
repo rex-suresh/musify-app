@@ -16,7 +16,7 @@ const TrackItemCard = ({ item }: { item: unknown }) => {
 export const TrackSection = () => {
   const trackWrapperProps: ListSectionWrapperProps = {
     title: 'Top Tracks',
-    queryName: 'top-playlist',
+    queryName: 'top-tracks',
     itemCard: TrackItemCard,
     query: topTracks,
     listStyle: styles.trackList,

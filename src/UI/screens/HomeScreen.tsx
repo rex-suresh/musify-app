@@ -7,15 +7,6 @@ import { PlaylistSection } from '../components/playlistCard/PlaylistSection';
 import { TrackSection } from '../components/trackCard/TrackSection';
 
 export const HomeScreen = () => {
-  // const { data: topArtistsReq, error: topArtistsReqError } = useQuery(
-  //   'topArtists',
-  //   topArtists,
-  // );
-  // const { data: topTracksReq, error: topTracksReqError } = useQuery(
-  //   'topTracks',
-  //   topTracks,
-  // );
-
   return (
     <View style={styles.homeScreen}>
       <ScrollView>
