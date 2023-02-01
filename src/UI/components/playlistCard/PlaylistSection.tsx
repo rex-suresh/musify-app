@@ -12,7 +12,6 @@ export const PlaylistSection = () => {
   if (error) {
     return <></>;
   }
-  console.log({ data });
 
   return isLoading ? (
     <Text>Loading</Text>
