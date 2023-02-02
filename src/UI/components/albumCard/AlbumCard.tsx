@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
+import { navigateToAlbumDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { AlbumCardProps, AlbumInfoParams } from './AlbumCard.types';
 
@@ -36,15 +38,18 @@ const AlbumInfo = ({ name, artist }: AlbumInfoParams) => (
 
 export const AlbumCard = (props: AlbumCardProps) => {
   const { id, name, artist, image, label, explicit } = props;
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.albumCard}>
-      <AlbumImage
-        url={image}
-        id={id}
-      />
-      <AlbumInfo {...{ name, artist, label, explicit }} />
-    </View>
+    <TouchableOpacity onPress={navigateToAlbumDetailPage(navigation)}>
+      <View style={styles.albumCard}>
+        <AlbumImage
+          url={image}
+          id={id}
+        />
+        <AlbumInfo {...{ name, artist, label, explicit }} />
+      </View>
+    </TouchableOpacity>
   );
 };
 

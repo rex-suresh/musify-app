@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
+import { navigateToPlaylistDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
@@ -29,25 +31,28 @@ const PlaylistImage = ({
 
 export const PlaylistCard = (props: PlaylistCardProps) => {
   const { id, name, image, description } = props;
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.playlistCard}>
-      <PlaylistImage
-        url={image}
-        id={id}
-      />
-      <View style={styles.playlistDescBox}>
+    <TouchableOpacity onPress={navigateToPlaylistDetailPage(navigation)}>
+      <View style={styles.playlistCard}>
+        <PlaylistImage
+          url={image}
+          id={id}
+        />
+        <View style={styles.playlistDescBox}>
+          <TitleText
+            content={description}
+            style={styles.playlistDesc}
+            lines={4}
+          />
+        </View>
         <TitleText
-          content={description}
-          style={styles.playlistDesc}
-          lines={4}
+          content={name}
+          style={styles.playlistTitle}
         />
       </View>
-      <TitleText
-        content={name}
-        style={styles.playlistTitle}
-      />
-    </View>
+    </TouchableOpacity>
   );
 };
 

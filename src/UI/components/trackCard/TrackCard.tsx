@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
+import { navigateToTrackDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { TrackCardProps, TrackInfoParams } from './TrackCard.types';
 
@@ -54,15 +56,18 @@ const TrackInfo = ({
 
 export const TrackCard = (props: TrackCardProps) => {
   const { id, name, artist, image, album, playbackSeconds } = props;
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.trackCard}>
-      <TrackImage
-        url={image}
-        id={id}
-      />
-      <TrackInfo {...{ artist, name, album, playbackSeconds }} />
-    </View>
+    <TouchableOpacity onPress={navigateToTrackDetailPage(navigation)}>
+      <View style={styles.trackCard}>
+        <TrackImage
+          url={image}
+          id={id}
+        />
+        <TrackInfo {...{ artist, name, album, playbackSeconds }} />
+      </View>
+    </TouchableOpacity>
   );
 };
 

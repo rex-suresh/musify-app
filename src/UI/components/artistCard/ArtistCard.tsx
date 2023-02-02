@@ -1,8 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
+import { navigateToArtistDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { ArtistCardProps } from './ArtistCard.types';
 
@@ -32,15 +34,18 @@ const ArtistInfo = ({ name }: { name: string }) => (
 
 export const ArtistCard = (props: ArtistCardProps) => {
   const { id, name, image } = props;
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.artistCard}>
-      <ArtistImage
-        url={image}
-        id={id}
-      />
-      <ArtistInfo {...{ name }} />
-    </View>
+    <TouchableOpacity onPress={navigateToArtistDetailPage(navigation)}>
+      <View style={styles.artistCard}>
+        <ArtistImage
+          url={image}
+          id={id}
+        />
+        <ArtistInfo {...{ name }} />
+      </View>
+    </TouchableOpacity>
   );
 };
 

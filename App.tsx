@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { HomeScreen } from './src/UI/screens/HomeScreen';
+import { ScreenNavigator } from './src/UI/navigation';
 
 const reactQueryClient = new QueryClient();
 
@@ -10,10 +10,10 @@ const App = () => (
     <View>
       <SafeAreaView style={styles.screen}>
         <StatusBar
-          showHideTransition={'slide'}
+          showHideTransition={'fade'}
           barStyle={'light-content'}
         />
-        <HomeScreen />
+        <ScreenNavigator />
       </SafeAreaView>
     </View>
   </QueryClientProvider>
