@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
@@ -41,7 +41,7 @@ export const AlbumCard = (props: AlbumCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={navigateToAlbumDetailPage(navigation)}>
+    <TouchableHighlight onPress={navigateToAlbumDetailPage(navigation)}>
       <View style={styles.albumCard}>
         <AlbumImage
           url={image}
@@ -49,7 +49,7 @@ export const AlbumCard = (props: AlbumCardProps) => {
         />
         <AlbumInfo {...{ name, artist, label, explicit }} />
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

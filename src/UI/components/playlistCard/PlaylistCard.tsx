@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
@@ -34,7 +34,7 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={navigateToPlaylistDetailPage(navigation)}>
+    <TouchableHighlight onPress={navigateToPlaylistDetailPage(navigation)}>
       <View style={styles.playlistCard}>
         <PlaylistImage
           url={image}
@@ -52,7 +52,7 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
           style={styles.playlistTitle}
         />
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

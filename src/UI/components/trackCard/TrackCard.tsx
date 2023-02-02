@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
@@ -59,7 +59,7 @@ export const TrackCard = (props: TrackCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity onPress={navigateToTrackDetailPage(navigation)}>
+    <TouchableHighlight onPress={navigateToTrackDetailPage(navigation)}>
       <View style={styles.trackCard}>
         <TrackImage
           url={image}
@@ -67,7 +67,7 @@ export const TrackCard = (props: TrackCardProps) => {
         />
         <TrackInfo {...{ artist, name, album, playbackSeconds }} />
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 

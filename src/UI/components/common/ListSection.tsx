@@ -23,6 +23,10 @@ export const ListSection = ({
         data={data}
         renderItem={renderItem}
         style={listStyle}
+        keyExtractor={(props) => {
+          const { id } = props as { id: string };
+          return id;
+        }}
         horizontal
       />
     </View>
