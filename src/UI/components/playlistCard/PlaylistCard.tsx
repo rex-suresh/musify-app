@@ -8,7 +8,7 @@ import { navigateToPlaylistDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
-const default_image = require('./images/playlist-default.png');
+const default_image = require('./../../images/playlist-default.png');
 
 const PlaylistImage = ({
   url,

@@ -13,7 +13,7 @@ import { SearchScreen } from './screens/SearchScreen';
 import { TrackDetailPage } from './screens/TrackDetailPage';
 
 type NavigationProps = {
-  navigate: (route: SCREENS | string, props?: unknown) => void;
+  navigate: (screen: any, props?: any) => void;
 };
 
 export const navigateToArtistDetailPage =

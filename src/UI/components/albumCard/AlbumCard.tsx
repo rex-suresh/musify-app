@@ -8,7 +8,7 @@ import { navigateToAlbumDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { AlbumCardProps, AlbumInfoParams } from './AlbumCard.types';
 
-const default_image = require('./images/album-default.png');
+const default_image = require('./../../images/album-default.png');
 
 const AlbumImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
   return (
