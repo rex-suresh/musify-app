@@ -1,15 +1,20 @@
-import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, Theme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
+import { colors } from './colors';
 import { SCREENS } from './routes';
 import { AlbumDetailPage } from './screens/AlbumDetailPage';
 import { ArtistDetailPage } from './screens/ArtistDetailPage';
-import { TrackDetailPage } from './screens/TrackDetailPage';
-import { PlaylistDetailPage } from './screens/PlaylistDetailPage';
 import { HomeScreen } from './screens/HomeScreen';
-import { colors } from './colors';
+import { PlayerScreen } from './screens/PlayerScreen';
+import { PlaylistDetailPage } from './screens/PlaylistDetailPage';
+import { SearchScreen } from './screens/SearchScreen';
+import { TrackDetailPage } from './screens/TrackDetailPage';
 
-type NavigationProps = { navigate: (route: SCREENS) => void };
+type NavigationProps = {
+  navigate: (route: SCREENS | string, props?: unknown) => void;
+};
 
 export const navigateToArtistDetailPage =
   (navigation: NavigationProps) => () => {
@@ -35,8 +40,6 @@ export const navigateToHomePage = (navigation: NavigationProps) => () => {
   navigation.navigate(SCREENS.HOME);
 };
 
-const NavStack = createNativeStackNavigator();
-
 const theme: Theme = {
   colors: {
     background: colors.screenBg,
@@ -49,14 +52,11 @@ const theme: Theme = {
   dark: true,
 };
 
-export const ScreenNavigator = () => {
+const NavStack = createNativeStackNavigator();
+export const SubScreenNavigator = () => {
   return (
     <NavigationContainer theme={theme}>
-      <NavStack.Navigator initialRouteName={SCREENS.HOME}>
-        <NavStack.Screen
-          name={SCREENS.HOME}
-          component={HomeScreen}
-        />
+      <NavStack.Navigator>
         <NavStack.Screen
           name={SCREENS.ARTIST_SCREEN}
           component={ArtistDetailPage}
@@ -74,6 +74,30 @@ export const ScreenNavigator = () => {
           component={PlaylistDetailPage}
         />
       </NavStack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+const NavBar = createBottomTabNavigator();
+export const BottomBarScreenNavigator = () => {
+  return (
+    <NavigationContainer theme={theme}>
+      <NavBar.Navigator
+        initialRouteName={SCREENS.HOME}
+        screenOptions={{ headerShown: false }}>
+        <NavBar.Screen
+          name={SCREENS.HOME}
+          component={HomeScreen}
+        />
+        <NavBar.Screen
+          name={SCREENS.SEARCH}
+          component={SearchScreen}
+        />
+        <NavBar.Screen
+          name={SCREENS.PLAYER}
+          component={PlayerScreen}
+        />
+      </NavBar.Navigator>
     </NavigationContainer>
   );
 };
