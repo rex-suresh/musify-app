@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BottomBarScreenNavigator } from './src/UI/navigation';
+import { BottomBarScreenNavigator } from './src/UI/NavBar';
 
 const reactQueryClient = new QueryClient();
 
