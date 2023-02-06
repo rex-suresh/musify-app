@@ -1,9 +1,9 @@
-import { HomeScreen } from './screens/HomeScreen';
+import { BottomBarScreenNavigator } from './NavBar';
 import { AlbumDetailPage } from './screens/AlbumDetailPage';
 import { ArtistDetailPage } from './screens/ArtistDetailPage';
-import { PlaylistDetailPage } from './screens/PlaylistDetailPage';
-import { TrackDetailPage } from './screens/TrackDetailPage';
+import { HomeScreen } from './screens/HomeScreen';
 import { PlayerScreen } from './screens/PlayerScreen';
+import { PlaylistDetailPage } from './screens/PlaylistDetailPage';
 import { SearchScreen } from './screens/SearchScreen';
 
 /* eslint-disable no-unused-vars */
@@ -13,9 +13,9 @@ export enum SCREENS {
   SEARCH = 'Search',
   PLAYER = 'Player',
   ARTIST_SCREEN = 'Artist Screen',
-  TRACK_SCREEN = 'Track Screen',
   ALBUM_SCREEN = 'Album Screen',
   PLAYLIST_SCREEN = 'Playlist Screen',
+  ROOT = 'root',
 }
 
 export const endScreens: Record<SCREENS, () => JSX.Element> = {
@@ -23,7 +23,7 @@ export const endScreens: Record<SCREENS, () => JSX.Element> = {
   [SCREENS.PLAYER]: PlayerScreen,
   [SCREENS.SEARCH]: SearchScreen,
   [SCREENS.ARTIST_SCREEN]: ArtistDetailPage,
-  [SCREENS.TRACK_SCREEN]: TrackDetailPage,
   [SCREENS.ALBUM_SCREEN]: AlbumDetailPage,
   [SCREENS.PLAYLIST_SCREEN]: PlaylistDetailPage,
+  [SCREENS.ROOT]: BottomBarScreenNavigator,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { BottomBarScreenNavigator } from './src/UI/NavBar';
+import { SubScreenNavigator } from './src/UI/NavStack';
 
 const reactQueryClient = new QueryClient();
 
@@ -13,8 +13,7 @@ const App = () => (
           showHideTransition={'fade'}
           barStyle={'light-content'}
         />
-        {/* <SubScreenNavigator /> */}
-        <BottomBarScreenNavigator />
+        <SubScreenNavigator />
       </SafeAreaView>
     </View>
   </QueryClientProvider>

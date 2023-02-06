@@ -16,7 +16,7 @@ export const navigateToAlbumDetailPage =
 
 export const navigateToTrackDetailPage =
   (navigation: NavigationProps) => () => {
-    navigation.navigate(SCREENS.TRACK_SCREEN);
+    navigation.navigate(SCREENS.PLAYER);
   };
 
 export const navigateToPlaylistDetailPage =
