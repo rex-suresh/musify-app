@@ -8,7 +8,7 @@ import { navigateToArtistDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { ArtistCardProps } from './ArtistCard.types';
 
-const default_image = require('./../../images/artist-default.jpg');
+const default_image = require('./../../images/artist-default.png');
 
 const ArtistImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
   return (

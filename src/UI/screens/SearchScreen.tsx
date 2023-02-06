@@ -1,4 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
+import { PageTitle } from '../components/common/Titles';
 
-export const SearchScreen = () => <Text>Search Page</Text>;
+export const SearchScreen = () => (
+  <View>
+    <PageTitle title="Search" />
+  </View>
+);
