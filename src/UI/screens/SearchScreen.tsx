@@ -1,9 +1,36 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { colors } from '../colors';
 import { PageTitle } from '../components/common/Titles';
+import { sizes } from '../fontSizes';
 
-export const SearchScreen = () => (
-  <View>
-    <PageTitle title="Search" />
-  </View>
-);
+export const SearchScreen = () => {
+  const [searchKeyword, setSearchKey] = useState('');
+
+  return (
+    <View>
+      <PageTitle title="Search" />
+      <TextInput
+        placeholder="Search"
+        onChangeText={(text) => setSearchKey(text)}
+        value={searchKeyword}
+        style={styles.searchBox}
+        placeholderTextColor={colors.fontDimLight}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  searchBox: {
+    width: '100%',
+    marginTop: 20,
+    padding: 10,
+    borderColor: colors.greyBd,
+    borderWidth: 2,
+    color: 'white',
+    backgroundColor: 'black',
+    fontSize: sizes.M,
+    borderRadius: 15,
+  },
+});
