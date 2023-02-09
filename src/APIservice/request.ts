@@ -1,7 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Platform } from 'react-native';
 import { routes } from './routes';
 
-const BASE_URL = 'http://127.0.0.1:9913';
+const BASE_URL =
+  Platform.OS === 'ios' ? 'http://127.0.0.1:4000' : 'http://10.0.2.2:4000';
 
 const api = axios.create({ baseURL: BASE_URL });
 const logError = (error: Error) => console.error(error.message);
