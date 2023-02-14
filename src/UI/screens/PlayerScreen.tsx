@@ -7,8 +7,6 @@ import TrackPlayer from 'react-native-track-player';
 export const PlayerScreen = () => {
   useEffect(() => {
     const start = async () => {
-      // Set up the player
-
       // Add a track to the queue
       await TrackPlayer.add({
         id: 'trackId',
@@ -19,7 +17,7 @@ export const PlayerScreen = () => {
       });
 
       // Start playing it
-      await TrackPlayer.play();
+      // await TrackPlayer.play();
     };
     start();
   }, []);

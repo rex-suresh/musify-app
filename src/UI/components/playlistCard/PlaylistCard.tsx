@@ -8,7 +8,7 @@ import { navigateToPlaylistDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
-const default_image = require('./../../images/playlist-default.png');
+const default_playlist_image = require('./../../images/playlist-default.png');
 
 const PlaylistImage = ({
   url,
@@ -23,7 +23,7 @@ const PlaylistImage = ({
         key={id.concat('-image')}
         source={{ uri: url }}
         style={styles.playlistImage}
-        defaultSource={default_image}
+        defaultSource={default_playlist_image}
       />
     </View>
   );

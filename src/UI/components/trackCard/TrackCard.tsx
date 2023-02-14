@@ -8,7 +8,7 @@ import { navigateToTrackDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
 import { TrackCardProps, TrackInfoParams } from './TrackCard.types';
 
-const default_image = require('./../../images/track-default.png');
+const default_track_image = require('./../../images/track-default.png');
 
 const minute = (seconds: number = 0) =>
   `${Math.floor(seconds / 60)}:${seconds % 60}`;
@@ -20,7 +20,7 @@ const TrackImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
         key={id.concat('-image')}
         source={{ uri: url }}
         style={styles.trackImage}
-        defaultSource={default_image}
+        defaultSource={default_track_image}
       />
     </View>
   );
