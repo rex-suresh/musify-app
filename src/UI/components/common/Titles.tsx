@@ -7,6 +7,10 @@ export const SectionContentTitle = ({ title }: { title: string }) => (
   <Text style={styles.sectionTitle}>{title}</Text>
 );
 
+export const SubSectionContentTitle = ({ title }: { title: string }) => (
+  <Text style={styles.subSectionTitle}>{title}</Text>
+);
+
 export const PageTitle = ({ title }: { title: string }) => (
   <Text style={styles.pageTitle}>{title}</Text>
 );
@@ -29,6 +33,12 @@ export const TitleText = ({
 );
 
 const styles = StyleSheet.create({
+  subSectionTitle: {
+    color: colors.fontDimLight,
+    fontSize: sizes.S,
+    fontWeight: '600',
+    padding: 10,
+  },
   sectionTitle: {
     color: colors.fontL,
     fontSize: sizes.L,

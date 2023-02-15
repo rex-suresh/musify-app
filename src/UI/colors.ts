@@ -9,6 +9,7 @@ type part =
   | 'light'
   | 'fontDimLight'
   | 'dark'
+  | 'transparent'
   | 'secondary';
 
 export const colors: Record<part, string> = {
@@ -21,6 +22,7 @@ export const colors: Record<part, string> = {
   fontDim: 'rgb(150,150,150)',
   fontDimLight: 'rgb(200,200,200)',
   greyBd: 'rgb(120,120,120)',
-  greyBg: '#202124',
+  greyBg: '#111111',
   light: 'white',
+  transparent: 'rgba(0,0,0,0)',
 };

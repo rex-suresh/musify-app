@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { SectionContentTitle } from './Titles';
+import { SectionContentTitle, SubSectionContentTitle } from './Titles';
 
 const idAsKey = (props: unknown): string => {
   const { id } = props as { id: string };
@@ -53,8 +53,7 @@ export const ListSectionVertical = ({
 }) => {
   return (
     <View style={sectionStyle}>
-      <SectionContentTitle {...{ title }} />
-
+      <SubSectionContentTitle {...{ title }} />
       <FlatList
         data={data}
         renderItem={renderItem}
