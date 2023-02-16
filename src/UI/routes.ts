@@ -1,3 +1,4 @@
+import { ParamListBase, RouteProp } from '@react-navigation/native';
 import { BottomBarScreenNavigator } from './NavBar';
 import { AlbumDetailPage } from './screens/AlbumDetailPage';
 import { ArtistDetailPage } from './screens/ArtistDetailPage';
@@ -18,7 +19,15 @@ export enum SCREENS {
   ROOT = 'root',
 }
 
-export const endScreens: Record<SCREENS, () => JSX.Element> = {
+export type ScreenPropsType = {
+  route: RouteProp<ParamListBase, SCREENS>;
+  navigation: any;
+};
+
+export const endScreens: Record<
+  SCREENS,
+  (props: ScreenPropsType) => JSX.Element
+> = {
   [SCREENS.HOME]: HomeScreen,
   [SCREENS.PLAYER]: PlayerScreen,
   [SCREENS.SEARCH]: SearchScreen,

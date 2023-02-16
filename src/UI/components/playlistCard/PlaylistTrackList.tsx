@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { colors } from '../../colors';
 import { ListSectionVertical } from '../common/ListSection';
 import { TrackCardProps } from '../trackCard/TrackCard.types';
 import { TrackCardBar } from '../trackCard/TrackCardBar';

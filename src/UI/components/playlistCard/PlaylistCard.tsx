@@ -34,7 +34,12 @@ export const PlaylistCard = (props: PlaylistCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableHighlight onPress={navigateToPlaylistDetailPage(navigation)}>
+    <TouchableHighlight
+      onPress={navigateToPlaylistDetailPage(navigation, {
+        id,
+        name,
+        image,
+      })}>
       <View style={styles.playlistCard}>
         <PlaylistImage
           url={image}

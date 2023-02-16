@@ -16,7 +16,15 @@ const PlaylistInfo = ({ name }: { name: string }) => (
   />
 );
 
-export const PlaylistFigure = ({ id, url }: { id: string; url: string }) => (
+export const PlaylistFigure = ({
+  id,
+  url,
+  name,
+}: {
+  id: string;
+  url: string;
+  name: string;
+}) => (
   <View style={styles.figure}>
     <FastImage
       key={id.concat('-image')}
@@ -27,7 +35,7 @@ export const PlaylistFigure = ({ id, url }: { id: string; url: string }) => (
     <LinearGradient
       colors={[colors.transparent, colors.dark]}
       style={styles.infoBox}>
-      <PlaylistInfo name="New Music Weekly" />
+      <PlaylistInfo name={name} />
     </LinearGradient>
   </View>
 );
