@@ -62,24 +62,22 @@ export const TrackCardBar = (props: TrackCardProps) => {
 
 const styles = StyleSheet.create({
   image: {
-    borderColor: 'white',
-    borderWidth: 0.5,
     height: '100%',
     aspectRatio: 1,
-    borderRadius: 8,
+    borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: colors.screenBg,
   },
   trackBar: {
-    height: 70,
+    height: 60,
     backgroundColor: colors.greyBg,
-    marginBottom: 4,
+    margin: 4,
     padding: 6,
     borderRadius: 8,
     flexDirection: 'row',
   },
   infoBox: {
-    marginLeft: 15,
+    marginLeft: 16,
     marginRight: 10,
     paddingTop: 10,
     paddingBottom: 10,
@@ -87,13 +85,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: sizes.M,
+    fontSize: sizes.XS,
     color: colors.light,
     fontWeight: '500',
     paddingBottom: 5,
   },
   artistTitle: {
-    fontSize: sizes.XS,
+    fontSize: sizes.XXS,
     color: colors.fontDim,
     fontWeight: '400',
   },
