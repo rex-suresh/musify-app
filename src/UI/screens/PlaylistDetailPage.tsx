@@ -15,7 +15,7 @@ export const PlaylistDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
         url={image}
         name={name}
       />
-      <PlaylistTrackList />
+      <PlaylistTrackList id={id} />
     </View>
   );
 };

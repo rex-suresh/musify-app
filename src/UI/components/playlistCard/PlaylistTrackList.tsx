@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { ListSectionVertical } from '../common/ListSection';
+import { playlistDetail } from '../../../APIservice/request';
+import {
+  ListSectionVerticalWrapper,
+  ListSectionWrapperProps,
+} from '../common/ListSectionWrapper';
 import { TrackCardProps } from '../trackCard/TrackCard.types';
 import { TrackCardBar } from '../trackCard/TrackCardBar';
 
@@ -9,136 +13,17 @@ const trackBar = ({ item }: { item: unknown }) => {
   return <TrackCardBar {...props} />;
 };
 
-export const PlaylistTrackList = () => {
-  const tracks: unknown[] = [
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-    {
-      id: 'tra123',
-      name: 'Beat it',
-      artist: { name: 'Micheal Jackson', id: '123' },
-      album: { name: 'something', id: '123' },
-      image: '',
-      playbackSeconds: 12,
-      song: 'something',
-    },
-  ];
+export const PlaylistTrackList = ({ id }: { id: string }) => {
+  const props: ListSectionWrapperProps = {
+    queryName: `playlist-tracks-${id}`,
+    query: playlistDetail(id),
+    title: 'Tracks',
+    itemCard: trackBar,
+    listStyle: styles.list,
+    sectionStyle: styles.section,
+  };
 
-  return (
-    <ListSectionVertical
-      title="Tracks"
-      data={tracks}
-      renderItem={trackBar}
-      listStyle={styles.list}
-      sectionStyle={styles.section}
-    />
-  );
+  return <ListSectionVerticalWrapper {...props} />;
 };
 
 const styles = StyleSheet.create({

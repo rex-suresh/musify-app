@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from 'react-query';
-import { ListSection } from './ListSection';
+import { ListSection, ListSectionVertical } from './ListSection';
 
 export type ListSectionWrapperProps = {
   queryName: string;
@@ -29,6 +29,33 @@ export const ListSectionWrapper = ({
     <></>
   ) : (
     <ListSection
+      title={title}
+      data={data}
+      renderItem={itemCard}
+      listStyle={listStyle}
+      sectionStyle={sectionStyle}
+    />
+  );
+};
+
+export const ListSectionVerticalWrapper = ({
+  queryName,
+  query,
+  title,
+  itemCard,
+  listStyle,
+  sectionStyle,
+}: ListSectionWrapperProps) => {
+  const { isLoading, error, data } = useQuery(queryName, query);
+
+  if (error) {
+    return <></>;
+  }
+
+  return isLoading ? (
+    <></>
+  ) : (
+    <ListSectionVertical
       title={title}
       data={data}
       renderItem={itemCard}

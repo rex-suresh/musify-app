@@ -17,6 +17,6 @@ export const routes: Record<Route, string> = {
   artist: '',
   album: '',
   track: '',
-  playlist: '',
+  playlist: '/detail/playlist',
   search: '',
 };

@@ -21,7 +21,12 @@ const extractResult = (res: AxiosResponse) => {
   throw new Error(`Failed to request with status : ${res.status}`);
 };
 
+const playlistRoute = (playlistId: string) =>
+  `${routes.playlist}/${playlistId}`;
+
 export const topArtists = () => api.get(routes.topArt).then(extractResult);
 export const topPlaylists = () => api.get(routes.topPlay).then(extractResult);
 export const topTracks = () => api.get(routes.topTra).then(extractResult);
 export const topAlbums = () => api.get(routes.topAlb).then(extractResult);
+export const playlistDetail = (playlistId: string) => () =>
+  api.get(playlistRoute(playlistId)).then(extractResult);
