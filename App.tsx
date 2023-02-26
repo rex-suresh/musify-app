@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { TrackPlayerDataProvider } from './src/TrackPlayerDataProvider';
 import { SubScreenNavigator } from './src/UI/NavStack';
 
 const reactQueryClient = new QueryClient();
@@ -11,15 +12,17 @@ const App = () => {
 
   return (
     <QueryClientProvider client={reactQueryClient}>
-      <View>
-        <SafeAreaView style={styles.screen}>
-          <StatusBar
-            showHideTransition={'fade'}
-            barStyle={'light-content'}
-          />
-          <SubScreenNavigator />
-        </SafeAreaView>
-      </View>
+      <TrackPlayerDataProvider>
+        <View>
+          <SafeAreaView style={styles.screen}>
+            <StatusBar
+              showHideTransition={'fade'}
+              barStyle={'light-content'}
+            />
+            <SubScreenNavigator />
+          </SafeAreaView>
+        </View>
+      </TrackPlayerDataProvider>
     </QueryClientProvider>
   );
 };

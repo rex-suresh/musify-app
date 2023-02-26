@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { TrackListContext } from '../../../TrackPlayerDataProvider';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
 import { navigateToTrackDetailPage } from '../../navigation';
+import { mapToTrack } from '../common/mappers';
 import { TitleText } from '../common/Titles';
 import { TrackCardProps, TrackInfoParams } from './TrackCard.types';
 
@@ -57,9 +59,14 @@ const TrackInfo = ({
 export const TrackCard = (props: TrackCardProps) => {
   const { id, name, artist, image, album, playbackSeconds } = props;
   const navigation = useNavigation();
+  const { add } = useContext(TrackListContext);
 
   return (
-    <TouchableHighlight onPress={navigateToTrackDetailPage(navigation)}>
+    <TouchableHighlight
+      onPress={() => {
+        add(mapToTrack(props));
+        navigateToTrackDetailPage(navigation)();
+      }}>
       <View style={styles.trackCard}>
         <TrackImage
           url={image}

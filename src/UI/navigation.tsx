@@ -22,6 +22,7 @@ export const navigateToAlbumDetailPage =
 
 export const navigateToTrackDetailPage =
   (navigation: NavigationProps) => () => {
+    console.log('Invoked Nav');
     navigation.navigate(SCREENS.PLAYER);
   };
 
