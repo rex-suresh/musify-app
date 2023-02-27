@@ -1,3 +1,4 @@
+import { TrackCardProps } from './components/trackCard/TrackCard.types';
 import { SCREENS } from './routes';
 
 type NavigationProps = {
@@ -21,9 +22,8 @@ export const navigateToAlbumDetailPage =
   };
 
 export const navigateToTrackDetailPage =
-  (navigation: NavigationProps) => () => {
-    console.log('Invoked Nav');
-    navigation.navigate(SCREENS.PLAYER);
+  (navigation: NavigationProps) => (track: TrackCardProps) => {
+    navigation.navigate(SCREENS.PLAYER, track);
   };
 
 export const navigateToPlaylistDetailPage =

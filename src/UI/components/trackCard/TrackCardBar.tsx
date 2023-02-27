@@ -57,7 +57,7 @@ export const TrackCardBar = (props: TrackCardProps) => {
     <TouchableHighlight
       onPress={() => {
         add(mapToTrack(props));
-        navigateToTrackDetailPage(navigation)();
+        navigateToTrackDetailPage(navigation)(props);
       }}>
       <View style={styles.trackBar}>
         <TrackBarImage
