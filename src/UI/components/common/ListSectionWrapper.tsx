@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleSheet, ActivityIndicator } from 'react-native';
 import { useQuery } from 'react-query';
 import { ListSection, ListSectionVertical } from './ListSection';
 
@@ -26,7 +27,10 @@ export const ListSectionWrapper = ({
   }
 
   return isLoading ? (
-    <></>
+    <ActivityIndicator
+      size={'small'}
+      style={[sectionStyle, styles.activityIndicator]}
+    />
   ) : (
     <ListSection
       title={title}
@@ -53,7 +57,10 @@ export const ListSectionVerticalWrapper = ({
   }
 
   return isLoading ? (
-    <></>
+    <ActivityIndicator
+      size={'small'}
+      style={styles.activityIndicator}
+    />
   ) : (
     <ListSectionVertical
       title={title}
@@ -64,3 +71,10 @@ export const ListSectionVerticalWrapper = ({
     />
   );
 };
+
+const styles = StyleSheet.create({
+  activityIndicator: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+});
