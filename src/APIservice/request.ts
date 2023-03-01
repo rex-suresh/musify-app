@@ -23,6 +23,7 @@ const extractResult = (res: AxiosResponse) => {
 
 const playlistRoute = (playlistId: string) =>
   `${routes.playlist}/${playlistId}`;
+const albumRoute = (albumId: string) => `${routes.album}/${albumId}`;
 
 export const topArtists = () => api.get(routes.topArt).then(extractResult);
 export const topPlaylists = () => api.get(routes.topPlay).then(extractResult);
@@ -30,3 +31,5 @@ export const topTracks = () => api.get(routes.topTra).then(extractResult);
 export const topAlbums = () => api.get(routes.topAlb).then(extractResult);
 export const playlistDetail = (playlistId: string) => () =>
   api.get(playlistRoute(playlistId)).then(extractResult);
+export const albumDetail = (albumId: string) => () =>
+  api.get(albumRoute(albumId)).then(extractResult);

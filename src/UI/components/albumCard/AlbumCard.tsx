@@ -41,7 +41,11 @@ export const AlbumCard = (props: AlbumCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableHighlight onPress={navigateToAlbumDetailPage(navigation)}>
+    <TouchableHighlight
+      onPress={navigateToAlbumDetailPage(navigation, {
+        ...props,
+        citation: artist.name,
+      })}>
       <View style={styles.albumCard}>
         <AlbumImage
           url={image}

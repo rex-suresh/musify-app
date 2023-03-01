@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { playlistDetail } from '../../../APIservice/request';
+import { albumDetail } from '../../../APIservice/request';
 import {
   ListSectionVerticalWrapper,
   ListSectionWrapperProps,
 } from '../common/ListSectionWrapper';
 import { trackBar } from '../trackCard/TrackCard';
 
-export const PlaylistTrackList = ({ id }: { id: string }) => {
+export const AlbumTrackList = ({ id }: { id: string }) => {
   const props: ListSectionWrapperProps = {
-    queryName: `playlist-tracks-${id}`,
-    query: playlistDetail(id),
+    queryName: `album-tracks-${id}`,
+    query: albumDetail(id),
     title: 'Tracks',
     itemCard: trackBar,
     listStyle: styles.list,

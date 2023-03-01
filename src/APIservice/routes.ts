@@ -15,7 +15,7 @@ export const routes: Record<Route, string> = {
   topTra: '/home/tracks',
   topPlay: '/home/playlists',
   artist: '',
-  album: '',
+  album: '/detail/album',
   track: '',
   playlist: '/detail/playlist',
   search: '',

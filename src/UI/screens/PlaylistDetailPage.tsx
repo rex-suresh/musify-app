@@ -2,11 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { PlaylistFigure } from '../components/playlistCard/PlayListFigure';
 import { PlaylistTrackList } from '../components/playlistCard/PlaylistTrackList';
-import { PlaylistDetailPageProps } from '../navigation';
+import { DetailPageProps } from '../navigation';
 import { ScreenPropsType } from '../routes';
 
 export const PlaylistDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
-  const { id, image, name } = route.params as PlaylistDetailPageProps;
+  const { id, image, name } = route.params as DetailPageProps;
 
   return (
     <View style={styles.page}>

@@ -9,6 +9,7 @@ import { navigateToTrackDetailPage } from '../../navigation';
 import { mapToTrack } from '../common/mappers';
 import { TitleText } from '../common/Titles';
 import { TrackCardProps, TrackInfoParams } from './TrackCard.types';
+import { TrackCardBar } from './TrackCardBar';
 
 const default_track_image = require('./../../images/track-default.png');
 
@@ -76,6 +77,11 @@ export const TrackCard = (props: TrackCardProps) => {
       </View>
     </TouchableHighlight>
   );
+};
+
+export const trackBar = ({ item }: { item: unknown }) => {
+  const props = item as TrackCardProps;
+  return <TrackCardBar {...props} />;
 };
 
 const styles = StyleSheet.create({

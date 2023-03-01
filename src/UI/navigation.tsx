@@ -5,10 +5,11 @@ type NavigationProps = {
   navigate: (screen: any, props?: any) => void;
 };
 
-export type PlaylistDetailPageProps = {
+export type DetailPageProps = {
   id: string;
   name: string;
   image: string;
+  citation?: string;
 };
 
 export const navigateToArtistDetailPage =
@@ -17,8 +18,8 @@ export const navigateToArtistDetailPage =
   };
 
 export const navigateToAlbumDetailPage =
-  (navigation: NavigationProps) => () => {
-    navigation.navigate(SCREENS.ALBUM_SCREEN);
+  (navigation: NavigationProps, props: DetailPageProps) => () => {
+    navigation.navigate(SCREENS.ALBUM_SCREEN, props);
   };
 
 export const navigateToTrackDetailPage =
@@ -27,7 +28,7 @@ export const navigateToTrackDetailPage =
   };
 
 export const navigateToPlaylistDetailPage =
-  (navigation: NavigationProps, props: PlaylistDetailPageProps) => () => {
+  (navigation: NavigationProps, props: DetailPageProps) => () => {
     navigation.navigate(SCREENS.PLAYLIST_SCREEN, props);
   };
 
