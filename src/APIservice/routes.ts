@@ -14,9 +14,9 @@ export const routes: Record<Route, string> = {
   topArt: '/home/artists',
   topTra: '/home/tracks',
   topPlay: '/home/playlists',
-  artist: '',
+  artist: '/detail/artist',
   album: '/detail/album',
-  track: '',
   playlist: '/detail/playlist',
+  track: '',
   search: '',
 };

@@ -11,14 +11,14 @@ export const ListSection = ({
   title,
   data,
   renderItem,
-  listStyle,
-  sectionStyle,
+  listStyle = {},
+  sectionStyle = {},
 }: {
   title: string;
   data: unknown[];
   renderItem: ({ item }: { item: unknown }) => JSX.Element;
-  listStyle: Record<string, unknown>;
-  sectionStyle: Record<string, unknown>;
+  listStyle?: Record<string, unknown>;
+  sectionStyle?: Record<string, unknown>;
 }) => {
   return (
     <View style={sectionStyle}>

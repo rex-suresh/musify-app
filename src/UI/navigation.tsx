@@ -13,8 +13,8 @@ export type DetailPageProps = {
 };
 
 export const navigateToArtistDetailPage =
-  (navigation: NavigationProps) => () => {
-    navigation.navigate(SCREENS.ARTIST_SCREEN);
+  (navigation: NavigationProps, props: DetailPageProps) => () => {
+    navigation.navigate(SCREENS.ARTIST_SCREEN, props);
   };
 
 export const navigateToAlbumDetailPage =

@@ -8,7 +8,7 @@ import {
 import { AlbumCard } from './AlbumCard';
 import { AlbumCardProps } from './AlbumCard.types';
 
-const AlbumCardItem = ({ item }: { item: unknown }): JSX.Element => {
+export const AlbumCardItem = ({ item }: { item: unknown }): JSX.Element => {
   const props = item as AlbumCardProps; // casting for safety 🥲
   return <AlbumCard {...props} />;
 };

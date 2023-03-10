@@ -37,7 +37,7 @@ export const ArtistCard = (props: ArtistCardProps) => {
   const navigation = useNavigation();
 
   return (
-    <TouchableHighlight onPress={navigateToArtistDetailPage(navigation)}>
+    <TouchableHighlight onPress={navigateToArtistDetailPage(navigation, props)}>
       <View style={styles.artistCard}>
         <ArtistImage
           url={image}
