@@ -25,6 +25,10 @@ const playlistRoute = (playlistId: string) =>
   `${routes.playlist}/${playlistId}`;
 const albumRoute = (albumId: string) => `${routes.album}/${albumId}`;
 const artistRoute = (artistId: string) => `${routes.artist}/${artistId}`;
+const artistTrackRoute = (artistId: string) =>
+  `${routes.artistTracks}/${artistId}`;
+const artistAlbumRoute = (artistId: string) =>
+  `${routes.artistAlbums}/${artistId}`;
 
 export const topArtists = () => api.get(routes.topArt).then(extractResult);
 export const topPlaylists = () => api.get(routes.topPlay).then(extractResult);
@@ -37,3 +41,7 @@ export const albumDetail = (albumId: string) => () =>
   api.get(albumRoute(albumId)).then(extractResult);
 export const artistDetail = (artistId: string) => () =>
   api.get(artistRoute(artistId)).then(extractResult);
+export const artistTrackDetail = (artistId: string) => () =>
+  api.get(artistTrackRoute(artistId)).then(extractResult);
+export const artistAlbumDetail = (artistId: string) => () =>
+  api.get(artistAlbumRoute(artistId)).then(extractResult);

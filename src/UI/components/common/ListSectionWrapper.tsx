@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, ActivityIndicator } from 'react-native';
 import { useQuery } from 'react-query';
 import { ListSection, ListSectionVertical } from './ListSection';
@@ -10,6 +10,7 @@ export type ListSectionWrapperProps = {
   itemCard: ({ item }: { item: unknown }) => JSX.Element;
   listStyle: Record<string, unknown>;
   sectionStyle: Record<string, unknown>;
+  showLoad?: boolean;
 };
 
 export const ListSectionWrapper = ({
@@ -49,14 +50,23 @@ export const ListSectionVerticalWrapper = ({
   itemCard,
   listStyle,
   sectionStyle,
+  showLoad = true,
 }: ListSectionWrapperProps) => {
   const { isLoading, error, data } = useQuery(queryName, query);
+  const [shouldHide, setHide] = useState(false);
 
-  if (error) {
+  useEffect(() => {
+    if (error) {
+      console.error(`Error occurred while querying for ${queryName}`);
+      setHide(true);
+    }
+  }, [error, queryName]);
+
+  if (error || shouldHide) {
     return <></>;
   }
 
-  return isLoading ? (
+  return showIndicator(isLoading, showLoad, error) ? (
     <ActivityIndicator
       size={'small'}
       style={styles.activityIndicator}
@@ -78,3 +88,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 });
+const showIndicator = (isLoading: boolean, showLoad: boolean, error: unknown) =>
+  isLoading && showLoad && !error;

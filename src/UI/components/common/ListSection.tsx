@@ -51,6 +51,8 @@ export const ListSectionVertical = ({
   listStyle?: Record<string, unknown>;
   sectionStyle?: Record<string, unknown>;
 }) => {
+  const scroll = data?.length > 5;
+
   return (
     <View style={sectionStyle}>
       <SubSectionContentTitle {...{ title }} />
@@ -59,6 +61,7 @@ export const ListSectionVertical = ({
         renderItem={renderItem}
         style={listStyle}
         keyExtractor={idAsKey}
+        scrollEnabled={scroll}
       />
     </View>
   );

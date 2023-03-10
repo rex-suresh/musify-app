@@ -7,7 +7,9 @@ type Route =
   | 'album'
   | 'track'
   | 'playlist'
-  | 'search';
+  | 'search'
+  | 'artistTracks'
+  | 'artistAlbums';
 
 export const routes: Record<Route, string> = {
   topAlb: '/home/albums',
@@ -15,6 +17,8 @@ export const routes: Record<Route, string> = {
   topTra: '/home/tracks',
   topPlay: '/home/playlists',
   artist: '/detail/artist',
+  artistTracks: '/detail/artist/tracks',
+  artistAlbums: '/detail/artist/albums',
   album: '/detail/album',
   playlist: '/detail/playlist',
   track: '',
