@@ -1,9 +1,15 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Platform } from 'react-native';
+import { AsyncStorage, Platform } from 'react-native';
 import { routes } from './routes';
 
-const BASE_URL =
+let BASE_URL =
   Platform.OS === 'ios' ? 'http://127.0.0.1:4000' : 'http://10.0.2.2:4000';
+
+const customUrl = AsyncStorage.getItem('URL');
+
+customUrl.then((data) => {
+  BASE_URL = data ? data : BASE_URL;
+});
 
 const api = axios.create({ baseURL: BASE_URL });
 const logError = (error: Error) => console.error(error.message);
@@ -18,7 +24,8 @@ const extractResult = (res: AxiosResponse) => {
   if (res.data) {
     return res.data.result;
   }
-  throw new Error(`Failed to request with status : ${res.status}`);
+
+  throw new Error(`Failed to request, (${res.status})`);
 };
 
 const playlistRoute = (playlistId: string) =>
@@ -30,10 +37,24 @@ const artistTrackRoute = (artistId: string) =>
 const artistAlbumRoute = (artistId: string) =>
   `${routes.artistAlbums}/${artistId}`;
 
+export const queryNames = {
+  topArtists: 'top-artists',
+  topPlaylists: 'top-playlist',
+  topTracks: 'top-tracks',
+  topAlbums: 'top-albums',
+};
+
 export const topArtists = () => api.get(routes.topArt).then(extractResult);
 export const topPlaylists = () => api.get(routes.topPlay).then(extractResult);
 export const topTracks = () => api.get(routes.topTra).then(extractResult);
 export const topAlbums = () => api.get(routes.topAlb).then(extractResult);
+
+export const initQueries = [
+  { queryName: queryNames.topArtists, queryFn: topArtists },
+  { queryName: queryNames.topAlbums, queryFn: topAlbums },
+  { queryName: queryNames.topPlaylists, queryFn: topPlaylists },
+  { queryName: queryNames.topTracks, queryFn: topTracks },
+];
 
 export const playlistDetail = (playlistId: string) => () =>
   api.get(playlistRoute(playlistId)).then(extractResult);

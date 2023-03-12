@@ -44,15 +44,15 @@ export const ListSectionVertical = ({
   renderItem,
   listStyle = {},
   sectionStyle = {},
+  scrollable = true,
 }: {
   title: string;
   data: unknown[];
   renderItem: ({ item }: { item: unknown }) => JSX.Element;
   listStyle?: Record<string, unknown>;
   sectionStyle?: Record<string, unknown>;
+  scrollable?: boolean;
 }) => {
-  const scroll = data?.length > 5;
-
   return (
     <View style={sectionStyle}>
       <SubSectionContentTitle {...{ title }} />
@@ -61,7 +61,8 @@ export const ListSectionVertical = ({
         renderItem={renderItem}
         style={listStyle}
         keyExtractor={idAsKey}
-        scrollEnabled={scroll}
+        overScrollMode="auto"
+        scrollEnabled={scrollable}
       />
     </View>
   );

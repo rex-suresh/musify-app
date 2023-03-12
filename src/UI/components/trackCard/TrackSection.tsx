@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { topTracks } from '../../../APIservice/request';
+import { queryNames, topTracks } from '../../../APIservice/request';
 import {
   ListSectionWrapper,
   ListSectionWrapperProps,
@@ -16,7 +16,7 @@ const TrackItemCard = ({ item }: { item: unknown }) => {
 export const TrackSection = () => {
   const trackWrapperProps: ListSectionWrapperProps = {
     title: 'Top Tracks',
-    queryName: 'top-tracks',
+    queryName: queryNames.topTracks,
     itemCard: TrackItemCard,
     query: topTracks,
     listStyle: styles.trackList,

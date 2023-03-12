@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import {
+  AsyncStorage,
+  Button,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
 import { colors } from '../colors';
 import { PageTitle } from '../components/common/Titles';
 import { sizes } from '../fontSizes';
 
 export const SearchScreen = () => {
   const [searchKeyword, setSearchKey] = useState('');
+  const [domainKeyword, setdomainKey] = useState('');
 
   return (
     <View>
@@ -16,6 +23,19 @@ export const SearchScreen = () => {
         value={searchKeyword}
         style={styles.searchBox}
         placeholderTextColor={colors.fontDimLight}
+      />
+      <TextInput
+        placeholder="domain"
+        onChangeText={(text) => setdomainKey(text)}
+        value={domainKeyword}
+        style={styles.searchBox}
+        placeholderTextColor={colors.fontDimLight}
+      />
+      <Button
+        title="Set"
+        onPress={() => {
+          AsyncStorage.setItem('URL', domainKeyword);
+        }}
       />
     </View>
   );

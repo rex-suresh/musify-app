@@ -5,7 +5,6 @@ type Route =
   | 'topPlay'
   | 'artist'
   | 'album'
-  | 'track'
   | 'playlist'
   | 'search'
   | 'artistTracks'
@@ -21,6 +20,5 @@ export const routes: Record<Route, string> = {
   artistAlbums: '/detail/artist/albums',
   album: '/detail/album',
   playlist: '/detail/playlist',
-  track: '',
   search: '',
 };

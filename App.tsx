@@ -1,28 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { TrackPlayerDataProvider } from './src/TrackPlayerDataProvider';
+import { initQueries } from './src/APIservice/request';
 import { SubScreenNavigator } from './src/UI/NavStack';
 
-const reactQueryClient = new QueryClient();
+const waitBeforeRefetch = 6 * 60 * 60 * 1000;
+
+const reactQueryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: waitBeforeRefetch,
+      cacheTime: waitBeforeRefetch,
+      refetchOnReconnect: true,
+      refetchOnMount: 'always',
+    },
+  },
+});
 
 const App = () => {
-  TrackPlayer.setupPlayer();
+  useEffect(() => {
+    TrackPlayer.setupPlayer();
+    reactQueryClient.prefetchQuery(initQueries);
+  }, []);
 
   return (
     <QueryClientProvider client={reactQueryClient}>
-      <TrackPlayerDataProvider>
-        <View>
-          <SafeAreaView style={styles.screen}>
-            <StatusBar
-              showHideTransition={'fade'}
-              barStyle={'light-content'}
-            />
-            <SubScreenNavigator />
-          </SafeAreaView>
-        </View>
-      </TrackPlayerDataProvider>
+      <View>
+        <SafeAreaView style={styles.screen}>
+          <StatusBar
+            showHideTransition={'fade'}
+            barStyle={'light-content'}
+          />
+          <SubScreenNavigator />
+        </SafeAreaView>
+      </View>
     </QueryClientProvider>
   );
 };

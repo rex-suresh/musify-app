@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { topArtists } from '../../../APIservice/request';
+import { queryNames, topArtists } from '../../../APIservice/request';
 import {
   ListSectionWrapper,
   ListSectionWrapperProps,
@@ -16,7 +16,7 @@ const ArtistCardItem = ({ item }: { item: unknown }) => {
 export const ArtistSection = () => {
   const artistWrapperProps: ListSectionWrapperProps = {
     title: 'Top Artists',
-    queryName: 'top-artists',
+    queryName: queryNames.topArtists,
     itemCard: ArtistCardItem,
     query: topArtists,
     listStyle: styles.artistList,

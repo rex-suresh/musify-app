@@ -22,6 +22,7 @@ export const ArtistTrackList = ({
     listStyle: styles.list,
     sectionStyle: styles.section,
     showLoad,
+    scrollable: false,
   };
 
   return <ListSectionVerticalWrapper {...props} />;

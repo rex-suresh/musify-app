@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { topPlaylists } from '../../../APIservice/request';
+import { queryNames, topPlaylists } from '../../../APIservice/request';
 import {
   ListSectionWrapper,
   ListSectionWrapperProps,
@@ -16,7 +16,7 @@ const PlaylistCardItem = ({ item }: { item: unknown }) => {
 export const PlaylistSection = () => {
   const playlistWrapperProps: ListSectionWrapperProps = {
     title: 'Featured Playlists',
-    queryName: 'top-playlist',
+    queryName: queryNames.topPlaylists,
     itemCard: PlaylistCardItem,
     query: topPlaylists,
     listStyle: styles.playlistList,

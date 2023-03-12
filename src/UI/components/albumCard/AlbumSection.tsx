@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { topAlbums } from '../../../APIservice/request';
+import { queryNames, topAlbums } from '../../../APIservice/request';
 import {
   ListSectionWrapper,
   ListSectionWrapperProps,
@@ -16,7 +16,7 @@ export const AlbumCardItem = ({ item }: { item: unknown }): JSX.Element => {
 export const AlbumSection = () => {
   const albumWrapperProps: ListSectionWrapperProps = {
     title: 'Top Albums',
-    queryName: 'top-albums',
+    queryName: queryNames.topAlbums,
     itemCard: AlbumCardItem,
     query: topAlbums,
     listStyle: styles.albumList,
