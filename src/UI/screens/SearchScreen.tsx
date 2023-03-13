@@ -1,11 +1,5 @@
 import React, { useState } from 'react';
-import {
-  AsyncStorage,
-  Button,
-  StyleSheet,
-  TextInput,
-  View,
-} from 'react-native';
+import { Alert, Button, StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../colors';
 import { PageTitle } from '../components/common/Titles';
 import { sizes } from '../fontSizes';
@@ -34,7 +28,7 @@ export const SearchScreen = () => {
       <Button
         title="Set"
         onPress={() => {
-          AsyncStorage.setItem('URL', domainKeyword);
+          Alert.alert('OK not set');
         }}
       />
     </View>

@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { LogBox, ScrollView, StyleSheet } from 'react-native';
 import { ArtistAlbumList } from '../components/artistCard/ArtistAlbumList';
 import { ArtistFigure } from '../components/artistCard/ArtistFigure';
 import { ArtistTrackList } from '../components/artistCard/ArtistTrackList';
@@ -8,6 +8,9 @@ import { ScreenPropsType } from '../routes';
 
 export const ArtistDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
   const { id, image, name } = route.params as DetailPageProps;
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, []);
 
   return (
     <ScrollView

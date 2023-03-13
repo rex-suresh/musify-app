@@ -1,15 +1,9 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
-import { AsyncStorage, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { routes } from './routes';
 
-let BASE_URL =
+const BASE_URL =
   Platform.OS === 'ios' ? 'http://127.0.0.1:4000' : 'http://10.0.2.2:4000';
-
-const customUrl = AsyncStorage.getItem('URL');
-
-customUrl.then((data) => {
-  BASE_URL = data ? data : BASE_URL;
-});
 
 const api = axios.create({ baseURL: BASE_URL });
 const logError = (error: Error) => console.error(error.message);

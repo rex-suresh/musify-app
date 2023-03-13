@@ -28,7 +28,7 @@ export const ListSectionWrapper = ({
     return (
       <ActivityIndicator
         size={'small'}
-        style={[sectionStyle, styles.activityIndicator]}
+        style={[styles.activityIndicator, styles.activityIndicator]}
       />
     );
   }
@@ -60,10 +60,12 @@ export const ListSectionVerticalWrapper = ({
   const { isLoading, error, data } = useQuery(queryName, query);
 
   if (isLoading) {
-    <ActivityIndicator
-      size={'small'}
-      style={styles.activityIndicator}
-    />;
+    return (
+      <ActivityIndicator
+        size={'small'}
+        style={styles.activityIndicator}
+      />
+    );
   }
 
   if (error || !data) {
@@ -86,5 +88,7 @@ const styles = StyleSheet.create({
   activityIndicator: {
     flex: 1,
     flexDirection: 'column',
+    width: '100%',
+    height: '100%',
   },
 });
