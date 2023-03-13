@@ -24,16 +24,20 @@ export const ListSectionWrapper = ({
 }: ListSectionWrapperProps) => {
   const { isLoading, error, data } = useQuery(queryName, query);
 
+  if (isLoading) {
+    return (
+      <ActivityIndicator
+        size={'small'}
+        style={[sectionStyle, styles.activityIndicator]}
+      />
+    );
+  }
+
   if (error || !data) {
     return <></>;
   }
 
-  return isLoading ? (
-    <ActivityIndicator
-      size={'small'}
-      style={[sectionStyle, styles.activityIndicator]}
-    />
-  ) : (
+  return (
     <ListSection
       title={title}
       data={data}
@@ -55,16 +59,18 @@ export const ListSectionVerticalWrapper = ({
 }: ListSectionWrapperProps) => {
   const { isLoading, error, data } = useQuery(queryName, query);
 
+  if (isLoading) {
+    <ActivityIndicator
+      size={'small'}
+      style={styles.activityIndicator}
+    />;
+  }
+
   if (error || !data) {
     return <></>;
   }
 
-  return isLoading ? (
-    <ActivityIndicator
-      size={'small'}
-      style={styles.activityIndicator}
-    />
-  ) : (
+  return (
     <ListSectionVertical
       title={title}
       data={data}
