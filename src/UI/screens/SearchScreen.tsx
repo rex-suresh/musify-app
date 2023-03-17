@@ -16,14 +16,14 @@ export const SearchScreen = () => {
         onChangeText={(text) => setSearchKey(text)}
         value={searchKeyword}
         style={styles.searchBox}
-        placeholderTextColor={colors.fontDimLight}
+        placeholderTextColor={colors.lowContrast}
       />
       <TextInput
         placeholder="domain"
         onChangeText={(text) => setdomainKey(text)}
         value={domainKeyword}
         style={styles.searchBox}
-        placeholderTextColor={colors.fontDimLight}
+        placeholderTextColor={colors.lowContrast}
       />
       <Button
         title="Set"

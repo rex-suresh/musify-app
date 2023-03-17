@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   playlistTitle: {
-    color: colors.fontS,
+    color: colors.light,
     fontSize: sizes.S,
     fontWeight: '600',
     padding: 8,

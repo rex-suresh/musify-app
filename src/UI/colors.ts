@@ -1,28 +1,24 @@
 type part =
-  | 'screenBg'
-  | 'fontL'
-  | 'fontM'
-  | 'fontS'
-  | 'greyBd'
-  | 'fontDim'
-  | 'greyBg'
-  | 'light'
-  | 'fontDimLight'
-  | 'dark'
   | 'transparent'
+  | 'dark'
+  | 'light'
+  | 'highContrast'
+  | 'midContrast'
+  | 'lowContrast'
+  | 'veryLowContrast'
+  | 'greyBd'
+  | 'greyBg'
   | 'secondary';
 
 export const colors: Record<part, string> = {
-  secondary: 'rgb(200,50,50)',
+  transparent: 'rgba(0,0,0,0)',
   dark: 'black',
-  screenBg: 'black',
-  fontL: 'rgb(210,210,210)',
-  fontM: 'white',
-  fontS: 'white',
-  fontDim: 'rgb(150,150,150)',
-  fontDimLight: 'rgb(200,200,200)',
+  light: 'white',
+  highContrast: 'white',
+  midContrast: 'rgb(210,210,210)',
+  lowContrast: 'rgb(200,200,200)',
+  veryLowContrast: 'rgb(150,150,150)',
   greyBd: 'rgb(120,120,120)',
   greyBg: '#111111',
-  light: 'white',
-  transparent: 'rgba(0,0,0,0)',
+  secondary: 'rgb(200,50,50)',
 };

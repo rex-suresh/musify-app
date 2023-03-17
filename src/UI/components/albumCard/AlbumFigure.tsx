@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   artistInfo: {
     fontSize: sizes.XS,
-    color: colors.fontDim,
+    color: colors.veryLowContrast,
     textAlign: 'center',
   },
 });

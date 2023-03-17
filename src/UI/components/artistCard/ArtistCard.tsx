@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
   artistTitle: {
-    color: colors.fontS,
+    color: colors.light,
     fontSize: sizes.S,
     padding: 2,
     paddingTop: 8,

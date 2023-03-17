@@ -98,19 +98,19 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   trackTitle: {
-    color: colors.fontS,
+    color: colors.light,
     fontSize: sizes.S,
     fontWeight: '500',
     paddingBottom: 2,
   },
   trackInfoData: {
-    color: colors.fontDimLight,
+    color: colors.lowContrast,
     fontSize: sizes.XXS,
     fontWeight: '300',
     paddingBottom: 1,
   },
   trackTimeBox: {
-    backgroundColor: colors.screenBg,
+    backgroundColor: colors.dark,
     borderRadius: 3,
     justifyContent: 'center',
     position: 'absolute',

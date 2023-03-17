@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
     // borderWidth: 0.5,
   },
   albumTitle: {
-    color: colors.fontS,
+    color: colors.light,
     fontSize: sizes.S,
     padding: 2,
     paddingTop: 8,
     fontWeight: '500',
   },
   albumArtistTitle: {
-    color: colors.fontDim,
+    color: colors.veryLowContrast,
     fontSize: sizes.XXS,
     fontWeight: '300',
     paddingLeft: 2,

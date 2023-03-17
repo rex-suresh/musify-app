@@ -34,13 +34,13 @@ export const TitleText = ({
 
 const styles = StyleSheet.create({
   subSectionTitle: {
-    color: colors.fontDimLight,
+    color: colors.lowContrast,
     fontSize: sizes.S,
     fontWeight: '600',
     padding: 10,
   },
   sectionTitle: {
-    color: colors.fontL,
+    color: colors.midContrast,
     fontSize: sizes.L,
     fontWeight: '700',
     padding: 8,
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   pageTitle: {
-    color: colors.fontL,
+    color: colors.midContrast,
     fontSize: sizes.XXL,
     fontWeight: '400',
     paddingLeft: 12,

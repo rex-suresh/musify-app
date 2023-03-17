@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
     borderRadius: 10,
     overflow: 'hidden',
-    backgroundColor: colors.screenBg,
+    backgroundColor: colors.dark,
   },
   trackBar: {
     height: 60,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   artistTitle: {
     fontSize: sizes.XXS,
-    color: colors.fontDim,
+    color: colors.veryLowContrast,
     fontWeight: '400',
   },
 });

@@ -3,7 +3,7 @@ import { colors } from './colors';
 
 export const theme: Theme = {
   colors: {
-    background: colors.screenBg,
+    background: colors.dark,
     text: colors.light,
     border: 'none',
     notification: 'purple',
