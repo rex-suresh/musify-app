@@ -20,7 +20,7 @@ const reactQueryClient = new QueryClient({
 
 const App = () => {
   useEffect(() => {
-    TrackPlayer.setupPlayer();
+    TrackPlayer.setupPlayer({ backBuffer: 10, minBuffer: 2 });
     reactQueryClient.prefetchQuery(initQueries);
   }, []);
 

@@ -1,4 +1,4 @@
-import { Track } from 'react-native-track-player';
+import { Track, TrackType } from 'react-native-track-player';
 import { TrackCardProps } from '../trackCard/TrackCard.types';
 
 export const mapToTrack = ({
@@ -14,5 +14,6 @@ export const mapToTrack = ({
     album: album.name,
     artist: artist.name,
     artwork: image,
+    type: TrackType.SmoothStreaming,
   };
 };

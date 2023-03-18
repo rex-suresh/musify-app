@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
@@ -59,10 +59,51 @@ const PlayerArt = ({ image, id, name, artist }: TrackCardProps) => {
   );
 };
 
+const Progress = ({ progress }: { progress: number }) => (
+  <View style={styles.progressBarBase}>
+    <View
+      style={[
+        styles.progressIndicator,
+        {
+          width: `${progress * 100}%`,
+        },
+      ]}
+    />
+  </View>
+);
+
+const ProgressTimings = ({
+  currentTime,
+  totalTime,
+}: {
+  currentTime: number;
+  totalTime: number;
+}) => (
+  <View style={styles.progressTimes}>
+    <Text style={styles.progressTime}>{currentTime}:20</Text>
+    <Text style={styles.progressTime}>{totalTime}:30</Text>
+  </View>
+);
+
+const ProgressBar = () => {
+  // const { currentTime, totalTime, currentTrack } = useTrackDetails();
+  const progress = 0.3;
+
+  return (
+    <View style={[styles.info, styles.progressBar]}>
+      <Progress progress={progress} />
+      <ProgressTimings
+        currentTime={30}
+        totalTime={90}
+      />
+    </View>
+  );
+};
+
 export const PlayerContent = (props: TrackCardProps) => (
   <>
     <PlayerArt {...props} />
-    {/* <ProgressBar /> */}
+    <ProgressBar />
     {/* <PlayerControls /> */}
   </>
 );
@@ -90,5 +131,30 @@ const styles = StyleSheet.create({
     fontSize: sizes.XS,
     color: colors.midContrast,
     fontWeight: '400',
+  },
+  progressBar: {
+    marginTop: 30,
+  },
+  progressBarBase: {
+    width: '100%',
+    backgroundColor: colors.greyBg,
+    height: 3,
+    borderRadius: 2,
+    overflow: 'hidden',
+  },
+  progressIndicator: {
+    height: '100%',
+    borderRadius: 2,
+    backgroundColor: colors.light,
+  },
+  progressTimes: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  progressTime: {
+    color: colors.midContrast,
+    fontSize: sizes.micro,
   },
 });
