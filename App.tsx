@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { initQueries } from './src/APIservice/request';
 import { SubScreenNavigator } from './src/UI/NavStack';
 
 const waitBeforeRefetch = 6 * 60 * 60 * 1000;
@@ -20,8 +19,7 @@ const reactQueryClient = new QueryClient({
 
 const App = () => {
   useEffect(() => {
-    TrackPlayer.setupPlayer({ backBuffer: 10, minBuffer: 2 });
-    reactQueryClient.prefetchQuery(initQueries);
+    TrackPlayer.setupPlayer();
   }, []);
 
   return (
