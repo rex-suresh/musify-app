@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { useTrackDetails } from '../../../hooks/useTrackDetails';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
 import { TitleText } from '../common/Titles';
+import { minute } from '../common/utils';
 import { TrackCardProps } from '../trackCard/TrackCard.types';
 
 const defaultImage = require('./../../images/track-default.png');
@@ -73,28 +75,28 @@ const Progress = ({ progress }: { progress: number }) => (
 );
 
 const ProgressTimings = ({
-  currentTime,
+  elapsedTime,
   totalTime,
 }: {
-  currentTime: number;
+  elapsedTime: number;
   totalTime: number;
 }) => (
   <View style={styles.progressTimes}>
-    <Text style={styles.progressTime}>{currentTime}:20</Text>
-    <Text style={styles.progressTime}>{totalTime}:30</Text>
+    <Text style={styles.progressTime}>{minute(elapsedTime)}</Text>
+    <Text style={styles.progressTime}>{minute(totalTime)}</Text>
   </View>
 );
 
 const ProgressBar = () => {
-  // const { currentTime, totalTime, currentTrack } = useTrackDetails();
-  const progress = 0.3;
+  const { elapsedTime, totalTime } = useTrackDetails();
+  const progress = elapsedTime / totalTime;
 
   return (
     <View style={[styles.info, styles.progressBar]}>
       <Progress progress={progress} />
       <ProgressTimings
-        currentTime={30}
-        totalTime={90}
+        elapsedTime={elapsedTime}
+        totalTime={totalTime}
       />
     </View>
   );

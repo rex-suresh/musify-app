@@ -6,13 +6,11 @@ import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
 import { navigateToTrackDetailPage } from '../../navigation';
 import { TitleText } from '../common/Titles';
+import { minute } from '../common/utils';
 import { TrackCardProps, TrackInfoParams } from './TrackCard.types';
 import { TrackCardBar } from './TrackCardBar';
 
 const default_track_image = require('./../../images/track-default.png');
-
-const minute = (seconds: number = 0) =>
-  `${Math.floor(seconds / 60)}:${seconds % 60}`;
 
 const TrackImage = ({ url, id }: { url: string; id: string }): JSX.Element => {
   return (
