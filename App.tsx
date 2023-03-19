@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
-import TrackPlayer from 'react-native-track-player';
+import TrackPlayer, { Capability } from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SubScreenNavigator } from './src/UI/navigation/NavStack';
 
@@ -20,6 +20,12 @@ const reactQueryClient = new QueryClient({
 const App = () => {
   useEffect(() => {
     TrackPlayer.setupPlayer();
+    TrackPlayer.updateOptions({
+      progressUpdateEventInterval: 200,
+      capabilities: [Capability.Play, Capability.Pause],
+      compactCapabilities: [Capability.Play, Capability.Pause],
+      notificationCapabilities: [Capability.Play, Capability.Pause],
+    });
   }, []);
 
   return (

@@ -12,6 +12,7 @@ export const useTrackDetails = () => {
   }, []);
 
   return {
+    elapsedTimePrecise: progress.position,
     elapsedTime: Math.ceil(progress.position),
     totalTime: 30,
   };
