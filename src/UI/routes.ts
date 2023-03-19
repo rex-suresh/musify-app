@@ -1,5 +1,5 @@
 import { ParamListBase, RouteProp } from '@react-navigation/native';
-import { BottomBarScreenNavigator } from './NavBar';
+import { BottomBarScreenNavigator } from './navigation/NavBar';
 import { AlbumDetailPage } from './screens/AlbumDetailPage';
 import { ArtistDetailPage } from './screens/ArtistDetailPage';
 import { HomeScreen } from './screens/HomeScreen';

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { AlbumFigure } from '../components/albumCard/AlbumFigure';
 import { AlbumTrackList } from '../components/albumCard/AlbumTrackList';
-import { DetailPageProps } from '../navigation';
+import { DetailPageProps } from '../navigation/navigation';
 import { ScreenPropsType } from '../routes';
 
 export const AlbumDetailPage = ({ route }: ScreenPropsType): JSX.Element => {

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import TrackPlayer from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { SubScreenNavigator } from './src/UI/NavStack';
+import { SubScreenNavigator } from './src/UI/navigation/NavStack';
 
 const waitBeforeRefetch = 6 * 60 * 60 * 1000;
 

@@ -4,7 +4,7 @@ import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
-import { navigateToAlbumDetailPage } from '../../navigation';
+import { navigateToAlbumDetailPage } from '../../navigation/navigation';
 import { TitleText } from '../common/Titles';
 import { AlbumCardProps, AlbumInfoParams } from './AlbumCard.types';
 

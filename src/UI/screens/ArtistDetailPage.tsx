@@ -3,7 +3,7 @@ import { LogBox, ScrollView, StyleSheet } from 'react-native';
 import { ArtistAlbumList } from '../components/artistCard/ArtistAlbumList';
 import { ArtistFigure } from '../components/artistCard/ArtistFigure';
 import { ArtistTrackList } from '../components/artistCard/ArtistTrackList';
-import { DetailPageProps } from '../navigation';
+import { DetailPageProps } from '../navigation/navigation';
 import { ScreenPropsType } from '../routes';
 
 export const ArtistDetailPage = ({ route }: ScreenPropsType): JSX.Element => {

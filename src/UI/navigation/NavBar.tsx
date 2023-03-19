@@ -1,14 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
-import { SCREENS } from './routes';
-import { HomeScreen } from './screens/HomeScreen';
-import { PlayerScreen } from './screens/PlayerScreen';
-import { SearchScreen } from './screens/SearchScreen';
+import { SCREENS } from '../routes';
+import { HomeScreen } from '../screens/HomeScreen';
+import { PlayerScreen } from '../screens/PlayerScreen';
+import { SearchScreen } from '../screens/SearchScreen';
 
-const home_icon = require('./images/home-icon.png');
-const search_icon = require('./images/search-icon.png');
-const player_icon = require('./images/music-icon.png');
+const home_icon = require('../images/home-icon.png');
+const search_icon = require('../images/search-icon.png');
+const player_icon = require('../images/music-icon.png');
 
 type Props = { focused: boolean; color: string; size: number };
 

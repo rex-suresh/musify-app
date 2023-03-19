@@ -4,7 +4,7 @@ import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
-import { navigateToArtistDetailPage } from '../../navigation';
+import { navigateToArtistDetailPage } from '../../navigation/navigation';
 import { TitleText } from '../common/Titles';
 import { ArtistCardProps } from './ArtistCard.types';
 

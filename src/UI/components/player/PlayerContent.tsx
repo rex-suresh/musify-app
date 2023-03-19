@@ -102,11 +102,15 @@ const ProgressBar = () => {
   );
 };
 
+const PlayerControls = () => {
+  return <View></View>;
+};
+
 export const PlayerContent = (props: TrackCardProps) => (
   <>
     <PlayerArt {...props} />
     <ProgressBar />
-    {/* <PlayerControls /> */}
+    <PlayerControls />
   </>
 );
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SCREENS } from './routes';
-import { AlbumDetailPage } from './screens/AlbumDetailPage';
-import { ArtistDetailPage } from './screens/ArtistDetailPage';
-import { PlaylistDetailPage } from './screens/PlaylistDetailPage';
+import { SCREENS } from '../routes';
+import { AlbumDetailPage } from '../screens/AlbumDetailPage';
+import { ArtistDetailPage } from '../screens/ArtistDetailPage';
+import { PlaylistDetailPage } from '../screens/PlaylistDetailPage';
 import { NavigationContainer } from '@react-navigation/native';
-import { theme } from './theme';
+import { theme } from '../theme';
 import { BottomBarScreenNavigator } from './NavBar';
 
 const NavStack = createNativeStackNavigator();

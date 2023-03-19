@@ -1,5 +1,5 @@
-import { TrackCardProps } from './components/trackCard/TrackCard.types';
-import { SCREENS } from './routes';
+import { TrackCardProps } from '../components/trackCard/TrackCard.types';
+import { SCREENS } from '../routes';
 
 type NavigationProps = {
   navigate: (screen: any, props?: any) => void;

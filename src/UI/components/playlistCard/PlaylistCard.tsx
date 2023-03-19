@@ -4,7 +4,7 @@ import { StyleSheet, TouchableHighlight, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
-import { navigateToPlaylistDetailPage } from '../../navigation';
+import { navigateToPlaylistDetailPage } from '../../navigation/navigation';
 import { TitleText } from '../common/Titles';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
