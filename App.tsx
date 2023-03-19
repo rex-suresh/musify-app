@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
-import TrackPlayer, { Capability } from 'react-native-track-player';
+import TrackPlayer, {
+  AppKilledPlaybackBehavior,
+  Capability,
+} from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SubScreenNavigator } from './src/UI/navigation/NavStack';
 
@@ -21,7 +24,9 @@ const App = () => {
   useEffect(() => {
     TrackPlayer.setupPlayer();
     TrackPlayer.updateOptions({
-      progressUpdateEventInterval: 200,
+      android: {
+        appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
+      },
       capabilities: [Capability.Play, Capability.Pause],
       compactCapabilities: [Capability.Play, Capability.Pause],
       notificationCapabilities: [Capability.Play, Capability.Pause],
