@@ -18,6 +18,8 @@ const playButton = require('../../images/play-button.png');
 const pauseButton = require('../../images/pause-button.png');
 const repeatButton = require('../../images/repeat-button.png');
 const repeatOne = require('../../images/repeat-one-button.png');
+const nextButton = require('../../images/next-button.png');
+const prevButton = require('../../images/previous-button.png');
 const shuffleButton = require('../../images/shuffle-button.png');
 const queue = require('../../images/list-button.png');
 
@@ -29,6 +31,14 @@ const play = () => {
 const pause = () => {
   TrackPlayer.pause();
   ToastAndroid.show('Paused', 50);
+};
+
+const nextTrack = () => {
+  TrackPlayer.skipToNext();
+};
+
+const prevTrack = () => {
+  TrackPlayer.skipToPrevious();
 };
 
 const IconButton = ({
@@ -83,6 +93,8 @@ const Shuffle = () => (
   />
 );
 
+const repeatCycle = [RepeatMode.Queue, RepeatMode.Track, RepeatMode.Off];
+
 const Repeat = () => {
   const [repeatIndex, setRepeatIndex] = useState(0);
   const [repeatSelected, setRepeatSelected] = useState(
@@ -97,11 +109,9 @@ const Repeat = () => {
     setRepeatSelected(repeatMode);
     setRepeatIndex((repeatIndex + 1) % repeatCycle.length);
 
-    const repeatType = repeatMode === RepeatMode.Track ? 'one' : 'queue';
-    const toast =
-      repeatMode === RepeatMode.Off ? 'Repeat: off' : `Repeat: ${repeatType}`;
-
-    ToastAndroid.show(toast, 50);
+    if (repeatMode === RepeatMode.Off) {
+      ToastAndroid.show('Repeat: off', 50);
+    }
   };
 
   return (
@@ -113,13 +123,29 @@ const Repeat = () => {
   );
 };
 
-const repeatCycle = [RepeatMode.Off, RepeatMode.Queue, RepeatMode.Track];
+const Previous = () => (
+  <IconButton
+    onPress={prevTrack}
+    style={styles.iconSmall}
+    icon={prevButton}
+  />
+);
+
+const Next = () => (
+  <IconButton
+    onPress={nextTrack}
+    style={styles.iconSmall}
+    icon={nextButton}
+  />
+);
 
 export const PlayerControls = () => {
   return (
     <View style={styles.controls}>
       <Shuffle />
+      <Previous />
       <PlayPause />
+      <Next />
       <Repeat />
     </View>
   );
