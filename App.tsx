@@ -24,9 +24,11 @@ const App = () => {
   useEffect(() => {
     TrackPlayer.setupPlayer();
     TrackPlayer.updateOptions({
+      alwaysPauseOnInterruption: true,
       android: {
         appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
       },
+      stoppingAppPausesPlayback: true,
       capabilities: [Capability.Play, Capability.Pause],
       compactCapabilities: [Capability.Play, Capability.Pause],
       notificationCapabilities: [Capability.Play, Capability.Pause],
