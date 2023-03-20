@@ -5,7 +5,7 @@ import TrackPlayer, {
   Capability,
 } from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { SubScreenNavigator } from './src/UI/navigation/NavStack';
+import { BottomBarScreenNavigator } from './src/UI/navigation/NavBar';
 
 const waitBeforeRefetch = 6 * 60 * 60 * 1000;
 
@@ -43,7 +43,7 @@ const App = () => {
             showHideTransition={'fade'}
             barStyle={'light-content'}
           />
-          <SubScreenNavigator />
+          <BottomBarScreenNavigator />
         </SafeAreaView>
       </View>
     </QueryClientProvider>
