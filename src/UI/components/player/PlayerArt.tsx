@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { useTrackDetails } from '../../../hooks/useTrackDetails';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
 import { TitleText } from '../common/Titles';
@@ -43,17 +44,21 @@ const TrackInfo = ({
 };
 
 export const PlayerArt = ({ image, id, name, artist }: TrackCardProps) => {
+  const { activeTrack } = useTrackDetails();
+
   return (
     <>
       <FastImage
-        source={{ uri: prepareHDImageLink(image) }}
+        source={{
+          uri: prepareHDImageLink((activeTrack?.artwork as string) || image),
+        }}
         key={`player-image-${id}`}
         defaultSource={defaultImage}
         style={styles.image}
       />
       <TrackInfo
-        title={name}
-        artist={artist}
+        title={activeTrack?.title || name}
+        artist={activeTrack?.artist ? { name: activeTrack?.artist } : artist}
       />
     </>
   );

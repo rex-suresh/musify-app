@@ -1,4 +1,4 @@
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   ToastAndroid,
@@ -22,13 +22,13 @@ const shuffleButton = require('../../images/shuffle-button.png');
 const queue = require('../../images/list-button.png');
 
 const play = () => {
-  ToastAndroid.show('Playing', 50);
   TrackPlayer.play();
+  ToastAndroid.show('Playing', 50);
 };
 
 const pause = () => {
-  ToastAndroid.show('Paused', 50);
   TrackPlayer.pause();
+  ToastAndroid.show('Paused', 50);
 };
 
 const IconButton = ({
@@ -56,11 +56,11 @@ const PlayPause = () => {
   const playPauseAction = playing ? pause : play;
 
   useEffect(() => {
-    setPlaying(playbackState === State.Playing);
-  }, [playbackState]);
+    setPlaying(playbackState.state === State.Playing);
+  }, [playbackState.state]);
 
-  return playbackState === State.Connecting ||
-    playbackState === State.Buffering ? (
+  return playbackState.state === State.Buffering ||
+    playbackState.state === State.Loading ? (
     <ActivityIndicator
       size={'large'}
       style={styles.icon}
