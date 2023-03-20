@@ -5917,10 +5917,10 @@ react-native-svg@^13.8.0:
     css-select "^5.1.0"
     css-tree "^1.1.3"
 
-react-native-track-player@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-3.2.0.tgz#c7b7a53eaf4c248af2ac876ef349feaee2ef774a"
-  integrity sha512-svv6TOgU/quFV1aajG5PskVhgFG0wHQtO+aYs6cIH0D27ckzN8WVoC3jI94m1CVaSgLMw48P911csYuD2fIcqA==
+react-native-track-player@^4.0.0-rc01:
+  version "4.0.0-rc01"
+  resolved "https://registry.yarnpkg.com/react-native-track-player/-/react-native-track-player-4.0.0-rc01.tgz#fcfffcdbc9347b001467412ff4ab5e98b0d5d054"
+  integrity sha512-uqSCc9EH3wBbrAMqvOWA7B2ePEoJ2/wBosLFiqGszg4L68Qimfk0lxhNLNUnE8chKvJfE/lq0k5Y5PFO6PSPBg==
 
 react-native-vector-icons@^9.2.0:
   version "9.2.0"
