@@ -1,4 +1,5 @@
 import { TabActions } from '@react-navigation/native';
+import { justPlay } from '../../services/PlayerActions';
 import { TrackCardProps } from '../components/trackCard/TrackCard.types';
 import { SCREENS } from '../routes';
 
@@ -26,7 +27,8 @@ export const navigateToAlbumDetailPage =
 
 export const navigateToTrackDetailPage =
   (navigation: NavigationProps) => (track: TrackCardProps) => {
-    navigation.dispatch(TabActions.jumpTo(SCREENS.PLAYER, track));
+    justPlay(track);
+    navigation.dispatch(TabActions.jumpTo(SCREENS.PLAYER));
   };
 
 export const navigateToPlaylistDetailPage =

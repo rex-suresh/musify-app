@@ -5,13 +5,6 @@ export const useTrackDetails = () => {
   const progress = useProgress();
   const activeTrack = useActiveTrack();
 
-  useEffect(() => {
-    // TrackPlayer.addEventListener(
-    //   Event.PlaybackTrackChanged,
-    //   (trackChangeEvent) => {},
-    // );
-  }, []);
-
   return {
     activeTrack,
     elapsedTimePrecise: progress.position,

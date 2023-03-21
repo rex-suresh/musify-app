@@ -1,30 +1,24 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import TrackPlayer from 'react-native-track-player';
+import { useTrackDetails } from '../../hooks/useTrackDetails';
 import { colors } from '../colors';
-import { mapToTrack } from '../components/common/mappers';
 import { PageTitle } from '../components/common/Titles';
 import { PlayerContent } from '../components/player/PlayerContent';
-import { TrackCardProps } from '../components/trackCard/TrackCard.types';
-import { ScreenPropsType } from '../routes';
 
-export const PlayerScreen = ({ route }: ScreenPropsType) => {
-  const track = route.params as TrackCardProps;
+const default_track = require('../images/track-default.png');
 
-  useEffect(() => {
-    if (track) {
-      TrackPlayer.reset();
-      TrackPlayer.add(mapToTrack(track));
-      TrackPlayer.play();
-    }
-  }, [track]);
+export const PlayerScreen = () => {
+  const { activeTrack } = useTrackDetails();
 
   return (
     <>
       <>
         <ImageBackground
-          source={{ uri: track?.image }}
+          source={
+            activeTrack?.artwork ? { uri: activeTrack.artwork } : default_track
+          }
+          defaultSource={default_track}
           blurRadius={50}
           style={styles.page}
           resizeMode="cover"
@@ -35,7 +29,7 @@ export const PlayerScreen = ({ route }: ScreenPropsType) => {
         />
       </>
       <PageTitle title="Player" />
-      <PlayerContent {...track} />
+      <PlayerContent />
     </>
   );
 };

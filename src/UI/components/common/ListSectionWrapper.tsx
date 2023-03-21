@@ -12,6 +12,7 @@ export type ListSectionWrapperProps = {
   sectionStyle: Record<string, unknown>;
   scrollable?: boolean;
   showLoad?: boolean;
+  setActionData?: React.Dispatch<React.SetStateAction<any>>;
 };
 
 export const ListSectionWrapper = ({
@@ -56,6 +57,7 @@ export const ListSectionVerticalWrapper = ({
   listStyle,
   sectionStyle,
   scrollable,
+  setActionData = () => {},
 }: ListSectionWrapperProps) => {
   const { isLoading, error, data } = useQuery(queryName, query);
 
@@ -72,6 +74,7 @@ export const ListSectionVerticalWrapper = ({
     return <></>;
   }
 
+  setActionData(data);
   return (
     <ListSectionVertical
       title={title}

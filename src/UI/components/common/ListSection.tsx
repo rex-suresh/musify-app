@@ -55,7 +55,7 @@ export const ListSectionVertical = ({
 }) => {
   return (
     <View style={sectionStyle}>
-      <SubSectionContentTitle {...{ title }} />
+      {title && <SubSectionContentTitle {...{ title }} />}
       <FlatList
         data={data}
         renderItem={renderItem}

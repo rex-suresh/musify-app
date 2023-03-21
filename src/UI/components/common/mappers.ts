@@ -7,8 +7,10 @@ export const mapToTrack = ({
   album,
   artist,
   image,
+  id,
 }: TrackCardProps): Track => {
   return {
+    id,
     url: song,
     title: name,
     album: album.name,
