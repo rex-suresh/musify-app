@@ -97,9 +97,7 @@ const repeatCycle = [RepeatMode.Queue, RepeatMode.Track, RepeatMode.Off];
 
 const Repeat = () => {
   const [repeatIndex, setRepeatIndex] = useState(0);
-  const [repeatSelected, setRepeatSelected] = useState(
-    repeatCycle[repeatIndex],
-  );
+  const [repeatSelected, setRepeatSelected] = useState(RepeatMode.Off);
   const icon = repeatSelected === RepeatMode.Track ? repeatOne : repeatButton;
   const iconVisibility = repeatSelected === RepeatMode.Off ? 0.5 : 1;
 

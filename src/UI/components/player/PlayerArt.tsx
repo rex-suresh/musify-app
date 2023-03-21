@@ -1,16 +1,14 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { Track } from 'react-native-track-player';
 import { useTrackDetails } from '../../../hooks/useTrackDetails';
 import { colors } from '../../colors';
 import { sizes } from '../../fontSizes';
 import { TitleText } from '../common/Titles';
-import { TrackCardProps } from '../trackCard/TrackCard.types';
 
 const defaultImage = require('./../../images/track-default.png');
 
-const prepareHDImageLink = (link: string) => {
+const upScaleImage = (link: string) => {
   const hiRes = '500x500';
   if (link.includes(hiRes)) {
     return link;
@@ -63,7 +61,7 @@ export const PlayerArt = () => {
     <>
       <FastImage
         source={{
-          uri: prepareHDImageLink(activeTrack.artwork as string),
+          uri: upScaleImage(activeTrack.artwork as string),
         }}
         key={`player-image-${activeTrack.id}`}
         defaultSource={defaultImage}
