@@ -21,6 +21,6 @@ export const ArtistAlbumList = ({ id }: { id: string }) => {
 };
 
 const styles = StyleSheet.create({
-  section: { width: '100%', flex: 1 },
+  section: { width: '100%', flex: 1, marginTop: 30, marginBottom: 20 },
   list: {},
 });

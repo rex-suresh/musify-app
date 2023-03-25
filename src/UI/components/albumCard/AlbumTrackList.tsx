@@ -43,6 +43,7 @@ export const AlbumTrackList = ({ id }: { id: string }) => {
     listStyle: styles.list,
     sectionStyle: styles.section,
     setActionData: updateQueueList,
+    scrollable: false,
   };
 
   return (

@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
   },
   artistSection: {
     marginTop: 30,
+    marginBottom: 20,
   },
 });

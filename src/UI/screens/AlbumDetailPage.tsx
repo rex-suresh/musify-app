@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { AlbumFigure } from '../components/albumCard/AlbumFigure';
 import { AlbumTrackList } from '../components/albumCard/AlbumTrackList';
 import { DetailPageProps } from '../navigation/navigation';
@@ -9,7 +9,7 @@ export const AlbumDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
   const { id, image, name, citation } = route.params as DetailPageProps;
 
   return (
-    <View style={styles.page}>
+    <ScrollView style={styles.page}>
       <AlbumFigure
         id={id}
         url={image}
@@ -17,7 +17,7 @@ export const AlbumDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
         artist={citation}
       />
       <AlbumTrackList id={id} />
-    </View>
+    </ScrollView>
   );
 };
 

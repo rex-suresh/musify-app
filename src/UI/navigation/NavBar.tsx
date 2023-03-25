@@ -1,11 +1,12 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Image, ImageSourcePropType, StyleSheet } from 'react-native';
+import { Image, ImageSourcePropType, StyleSheet, View } from 'react-native';
 import { SCREENS } from '../routes';
 import { PlayerScreen } from '../screens/PlayerScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { theme } from '../theme';
+import { CustomTabBar } from './CustomBottomTabBar';
 import { SubScreenNavigator } from './NavStack';
 
 const home_icon = require('../images/home-icon.png');
@@ -31,7 +32,12 @@ export const BottomBarScreenNavigator = () => {
     <NavigationContainer theme={theme}>
       <NavBar.Navigator
         initialRouteName={SCREENS.ROOT}
-        screenOptions={{ headerShown: false, tabBarShowLabel: false }}>
+        screenOptions={{
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarHideOnKeyboard: true,
+        }}
+        tabBar={(props) => <CustomTabBar {...props} />}>
         <NavBar.Screen
           name={SCREENS.ROOT}
           component={SubScreenNavigator}

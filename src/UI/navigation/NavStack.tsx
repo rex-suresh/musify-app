@@ -11,7 +11,7 @@ export const SubScreenNavigator = () => {
   return (
     <NavStack.Navigator
       initialRouteName={SCREENS.HOME}
-      screenOptions={{ headerShown: true }}>
+      screenOptions={{ headerShown: true, animation: 'fade_from_bottom' }}>
       <NavStack.Screen
         name={SCREENS.HOME}
         component={HomeScreen}
