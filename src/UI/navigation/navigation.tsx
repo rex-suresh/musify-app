@@ -31,6 +31,10 @@ export const navigateToTrackDetailPage =
     navigation.dispatch(TabActions.jumpTo(SCREENS.PLAYER));
   };
 
+export const navigateToPlayer = (navigation: NavigationProps) => () => {
+  navigation.dispatch(TabActions.jumpTo(SCREENS.PLAYER));
+};
+
 export const navigateToPlaylistDetailPage =
   (navigation: NavigationProps, props: DetailPageProps) => () => {
     navigation.navigate(SCREENS.PLAYLIST_SCREEN, props);

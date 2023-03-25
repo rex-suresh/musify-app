@@ -58,7 +58,7 @@ const IconButton = ({
   </TouchableNativeFeedback>
 );
 
-const PlayPause = () => {
+export const PlayPause = () => {
   const playbackState = usePlaybackState();
   const [playing, setPlaying] = useState(false);
 

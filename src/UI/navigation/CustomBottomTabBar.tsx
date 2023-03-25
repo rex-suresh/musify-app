@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { State, usePlaybackState } from 'react-native-track-player';
 import { colors } from '../colors';
+import { MiniPlayer } from '../components/player/MiniPlayer';
 import { SCREENS } from '../routes';
 
 export const CustomTabBar = (props: BottomTabBarProps): JSX.Element => {
@@ -13,7 +14,9 @@ export const CustomTabBar = (props: BottomTabBarProps): JSX.Element => {
   useEffect(() => {
     if (
       playbackState.state &&
-      [State.Playing, State.Loading].includes(playbackState.state)
+      [State.Playing, State.Loading, State.Paused, State.Buffering].includes(
+        playbackState.state,
+      )
     ) {
       setShowMusicBar(true);
       return;
@@ -27,8 +30,7 @@ export const CustomTabBar = (props: BottomTabBarProps): JSX.Element => {
   ) {
     return (
       <>
-        <View style={{ height: 60, backgroundColor: colors.greyTransparent }} />
-        {/* player control will come here */}
+        <MiniPlayer />
         <BottomTabBar {...props} />
       </>
     );

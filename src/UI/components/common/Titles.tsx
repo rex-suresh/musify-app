@@ -21,16 +21,19 @@ export const TitleText = ({
   lines = 1,
 }: {
   style: Record<string, unknown>;
-  content: string;
+  content?: string;
   lines?: number;
-}): JSX.Element => (
-  <Text
-    ellipsizeMode="tail"
-    numberOfLines={lines}
-    style={style}>
-    {content}
-  </Text>
-);
+}): JSX.Element =>
+  content ? (
+    <Text
+      ellipsizeMode="tail"
+      numberOfLines={lines}
+      style={style}>
+      {content}
+    </Text>
+  ) : (
+    <></>
+  );
 
 const styles = StyleSheet.create({
   subSectionTitle: {

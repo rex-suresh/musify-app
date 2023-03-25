@@ -7,6 +7,7 @@ type part =
   | 'midContrast'
   | 'lowContrast'
   | 'veryLowContrast'
+  | 'darkContrast'
   | 'greyBd'
   | 'greyBg'
   | 'secondary';
@@ -20,6 +21,7 @@ export const colors: Record<part, string> = {
   midContrast: 'rgb(210,210,210)',
   lowContrast: 'rgb(200,200,200)',
   veryLowContrast: 'rgb(150,150,150)',
+  darkContrast: 'rgb(50,50,50)',
   greyBd: 'rgb(120,120,120)',
   greyBg: '#111111',
   secondary: 'rgb(200,50,50)',

@@ -10,12 +10,12 @@ import { TrackCardProps } from './TrackCard.types';
 
 const default_track_image = require('./../../images/track-default.png');
 
-const TrackBarImage = ({
+export const TrackBarImage = ({
   url,
-  id,
+  id = '',
 }: {
-  url: string;
-  id: string;
+  url?: string;
+  id?: string;
 }): JSX.Element => {
   return (
     <FastImage
@@ -27,12 +27,12 @@ const TrackBarImage = ({
   );
 };
 
-const TrackBarInfo = ({
+export const TrackBarInfo = ({
   name,
   artist,
 }: {
-  name: string;
-  artist: { name: string; id: string };
+  name?: string;
+  artist?: string;
 }) => (
   <View style={styles.infoBox}>
     <TitleText
@@ -40,7 +40,7 @@ const TrackBarInfo = ({
       style={styles.title}
     />
     <TitleText
-      content={artist.name}
+      content={artist}
       style={styles.artistTitle}
     />
   </View>
@@ -60,7 +60,10 @@ export const TrackCardBar = (props: TrackCardProps) => {
           url={image}
           id={id}
         />
-        <TrackBarInfo {...{ artist, name }} />
+        <TrackBarInfo
+          artist={artist.name}
+          name={name}
+        />
       </View>
     </TouchableHighlight>
   );
