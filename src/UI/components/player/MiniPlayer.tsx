@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, TouchableNativeFeedback, View } from 'react-native';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useTrackDetails } from '../../../hooks/useTrackDetails';
 import { colors } from '../../colors';
@@ -13,7 +13,7 @@ const TrackInfo = () => {
   const nav = useNavigation();
 
   return (
-    <TouchableNativeFeedback onPress={navigateToPlayer(nav)}>
+    <TouchableWithoutFeedback onPress={navigateToPlayer(nav)}>
       <View style={styles.info}>
         <View style={styles.image}>
           <TrackBarImage
@@ -26,7 +26,7 @@ const TrackInfo = () => {
           name={activeTrack?.title}
         />
       </View>
-    </TouchableNativeFeedback>
+    </TouchableWithoutFeedback>
   );
 };
 

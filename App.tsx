@@ -20,18 +20,28 @@ const reactQueryClient = new QueryClient({
   },
 });
 
+const playerCapabilities = [
+  Capability.Play,
+  Capability.Pause,
+  Capability.SkipToNext,
+  Capability.SkipToPrevious,
+];
+
 const App = () => {
   useEffect(() => {
-    TrackPlayer.setupPlayer();
+    TrackPlayer.setupPlayer({ backBuffer: 1.5, autoHandleInterruptions: true });
     TrackPlayer.updateOptions({
       alwaysPauseOnInterruption: true,
       android: {
-        appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
+        appKilledPlaybackBehavior:
+          AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+        alwaysPauseOnInterruption: true,
       },
-      stoppingAppPausesPlayback: true,
-      capabilities: [Capability.Play, Capability.Pause],
-      compactCapabilities: [Capability.Play, Capability.Pause],
-      notificationCapabilities: [Capability.Play, Capability.Pause],
+      capabilities: playerCapabilities,
+      compactCapabilities: playerCapabilities,
+      notificationCapabilities: playerCapabilities,
+      backwardJumpInterval: 1000,
+      forwardJumpInterval: 1000,
     });
   }, []);
 
