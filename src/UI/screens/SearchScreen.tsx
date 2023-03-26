@@ -1,50 +1,15 @@
-import React, { useState } from 'react';
-import { Alert, Button, StyleSheet, TextInput, View } from 'react-native';
-import { colors } from '../colors';
+import React from 'react';
+import { ScrollView } from 'react-native';
 import { PageTitle } from '../components/common/Titles';
-import { sizes } from '../fontSizes';
+import { SearchBar } from './SearchBar';
 
 export const SearchScreen = () => {
-  const [searchKeyword, setSearchKey] = useState('');
-  const [domainKeyword, setdomainKey] = useState('');
-
   return (
-    <View>
+    <ScrollView
+      keyboardDismissMode="on-drag"
+      alwaysBounceVertical={false}>
       <PageTitle title="Search" />
-      <TextInput
-        placeholder="Search"
-        onChangeText={(text) => setSearchKey(text)}
-        value={searchKeyword}
-        style={styles.searchBox}
-        placeholderTextColor={colors.lowContrast}
-      />
-      <TextInput
-        placeholder="domain"
-        onChangeText={(text) => setdomainKey(text)}
-        value={domainKeyword}
-        style={styles.searchBox}
-        placeholderTextColor={colors.lowContrast}
-      />
-      <Button
-        title="Set"
-        onPress={() => {
-          Alert.alert('OK not set');
-        }}
-      />
-    </View>
+      <SearchBar />
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  searchBox: {
-    width: '100%',
-    marginTop: 20,
-    padding: 10,
-    borderColor: colors.greyBd,
-    borderWidth: 2,
-    color: 'white',
-    backgroundColor: 'black',
-    fontSize: sizes.M,
-    borderRadius: 15,
-  },
-});

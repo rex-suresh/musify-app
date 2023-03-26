@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   info: {
     flexDirection: 'row',
-    flex: 2 / 3,
+    flex: 4 / 5,
   },
   gradient: {
     position: 'absolute',
