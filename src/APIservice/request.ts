@@ -22,14 +22,15 @@ const extractResult = (res: AxiosResponse) => {
   throw new Error(`Failed to request, (${res.status})`);
 };
 
-const playlistRoute = (playlistId: string) =>
-  `${routes.playlist}/${playlistId}`;
 const albumRoute = (albumId: string) => `${routes.album}/${albumId}`;
 const artistRoute = (artistId: string) => `${routes.artist}/${artistId}`;
 const artistTrackRoute = (artistId: string) =>
   `${routes.artistTracks}/${artistId}`;
 const artistAlbumRoute = (artistId: string) =>
   `${routes.artistAlbums}/${artistId}`;
+const playlistRoute = (playlistId: string) =>
+  `${routes.playlist}/${playlistId}`;
+const searchRoute = (keyword: string) => `${routes.search}/${keyword}`;
 
 export const queryNames = {
   topArtists: 'top-artists',
@@ -60,3 +61,6 @@ export const artistTrackDetail = (artistId: string) => () =>
   api.get(artistTrackRoute(artistId)).then(extractResult);
 export const artistAlbumDetail = (artistId: string) => () =>
   api.get(artistAlbumRoute(artistId)).then(extractResult);
+
+export const searchResult = (searchKey: string) => () =>
+  api.get(searchRoute(searchKey)).then(extractResult);

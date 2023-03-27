@@ -20,5 +20,5 @@ export const routes: Record<Route, string> = {
   artistAlbums: '/detail/artist/albums',
   album: '/detail/album',
   playlist: '/detail/playlist',
-  search: '',
+  search: '/search',
 };

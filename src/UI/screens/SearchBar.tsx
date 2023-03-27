@@ -3,14 +3,21 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../colors';
 import { sizes } from '../fontSizes';
 
-export const SearchBar = () => {
-  const [searchKeyword, setSearchKey] = useState('');
-
+export const SearchBar = ({
+  barRef,
+  searchKeyword,
+  onChange,
+}: {
+  barRef: React.RefObject<TextInput>;
+  searchKeyword: string;
+  onChange: (text: string) => void;
+}): JSX.Element => {
   return (
     <View style={styles.searchBox}>
       <TextInput
+        ref={barRef}
         placeholder="Artists, Tracks, Albums ..."
-        onChangeText={(text) => setSearchKey(text)}
+        onChangeText={onChange}
         value={searchKeyword}
         style={styles.searchBar}
         placeholderTextColor={colors.lowContrast}
