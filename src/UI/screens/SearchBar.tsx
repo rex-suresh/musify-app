@@ -7,10 +7,12 @@ export const SearchBar = ({
   barRef,
   searchKeyword,
   onChange,
+  startQuery,
 }: {
   barRef: React.RefObject<TextInput>;
   searchKeyword: string;
   onChange: (text: string) => void;
+  startQuery: () => void;
 }): JSX.Element => {
   return (
     <View style={styles.searchBox}>
@@ -18,10 +20,16 @@ export const SearchBar = ({
         ref={barRef}
         placeholder="Artists, Tracks, Albums ..."
         onChangeText={onChange}
+        onEndEditing={() => {
+          if (searchKeyword.length > 2) {
+            startQuery();
+          }
+        }}
         value={searchKeyword}
         style={styles.searchBar}
         placeholderTextColor={colors.lowContrast}
         multiline={false}
+        focusable
       />
     </View>
   );

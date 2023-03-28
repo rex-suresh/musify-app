@@ -11,6 +11,10 @@ export const SubSectionContentTitle = ({ title }: { title: string }) => (
   <Text style={styles.subSectionTitle}>{title}</Text>
 );
 
+export const SubSectionContentTitleRight = ({ title }: { title: string }) => (
+  <Text style={styles.subSectionTitleRight}>{title}</Text>
+);
+
 export const PageTitle = ({ title }: { title: string }) => (
   <Text style={styles.pageTitle}>{title}</Text>
 );
@@ -41,6 +45,13 @@ const styles = StyleSheet.create({
     fontSize: sizes.S,
     fontWeight: '600',
     padding: 10,
+  },
+  subSectionTitleRight: {
+    color: colors.lowContrast,
+    fontSize: sizes.M,
+    marginBottom: 10,
+    marginStart: 24,
+    fontWeight: '400',
   },
   sectionTitle: {
     color: colors.midContrast,

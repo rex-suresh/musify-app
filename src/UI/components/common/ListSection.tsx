@@ -1,6 +1,6 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { SectionContentTitle, SubSectionContentTitle } from './Titles';
+import { SectionContentTitle, SubSectionContentTitleRight } from './Titles';
 
 const idAsKey = (props: unknown): string => {
   const { id } = props as { id: string };
@@ -13,16 +13,23 @@ export const ListSection = ({
   renderItem,
   listStyle = {},
   sectionStyle = {},
+  subTitle = false,
 }: {
   title: string;
   data: unknown[];
   renderItem: ({ item }: { item: unknown }) => JSX.Element;
   listStyle?: Record<string, unknown>;
   sectionStyle?: Record<string, unknown>;
+  subTitle?: boolean;
 }) => {
   return (
     <View style={sectionStyle}>
-      <SectionContentTitle {...{ title }} />
+      {title &&
+        (subTitle ? (
+          <SubSectionContentTitleRight title={title} />
+        ) : (
+          <SectionContentTitle title={title} />
+        ))}
 
       <FlatList
         data={data}
@@ -45,6 +52,7 @@ export const ListSectionVertical = ({
   listStyle = {},
   sectionStyle = {},
   scrollable = true,
+  subTitle = false,
 }: {
   title: string;
   data: unknown[];
@@ -52,10 +60,16 @@ export const ListSectionVertical = ({
   listStyle?: Record<string, unknown>;
   sectionStyle?: Record<string, unknown>;
   scrollable?: boolean;
+  subTitle?: boolean;
 }) => {
   return (
     <View style={sectionStyle}>
-      {title && <SubSectionContentTitle {...{ title }} />}
+      {title &&
+        (subTitle ? (
+          <SubSectionContentTitleRight title={title} />
+        ) : (
+          <SectionContentTitle title={title} />
+        ))}
       <FlatList
         data={data}
         renderItem={renderItem}

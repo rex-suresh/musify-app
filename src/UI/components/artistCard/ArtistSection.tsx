@@ -8,7 +8,7 @@ import {
 import { ArtistCard } from './ArtistCard';
 import { ArtistCardProps } from './ArtistCard.types';
 
-const ArtistCardItem = ({ item }: { item: unknown }) => {
+export const ArtistCardItem = ({ item }: { item: unknown }) => {
   const data = item as ArtistCardProps; // 🥲
   return <ArtistCard {...data} />;
 };

@@ -8,7 +8,7 @@ import {
 import { PlaylistCard } from './PlaylistCard';
 import type { PlaylistCardProps } from './PlaylistCard.types';
 
-const PlaylistCardItem = ({ item }: { item: unknown }) => {
+export const PlaylistCardItem = ({ item }: { item: unknown }) => {
   const props = item as PlaylistCardProps; // 🥲
   return <PlaylistCard {...props} />;
 };
