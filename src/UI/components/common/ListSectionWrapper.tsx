@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { useQuery } from 'react-query';
+import { colors } from '../../colors';
 import { ListSection, ListSectionVertical } from './ListSection';
 
 export type ListSectionWrapperProps = {
@@ -29,12 +30,17 @@ export const ListSectionWrapper = ({
     return (
       <ActivityIndicator
         size={'small'}
+        color={colors.light}
         style={[styles.activityIndicator, styles.activityIndicator]}
       />
     );
   }
 
   if (error || !data) {
+    return <></>;
+  }
+
+  if (data?.length < 1) {
     return <></>;
   }
 
@@ -65,12 +71,17 @@ export const ListSectionVerticalWrapper = ({
     return (
       <ActivityIndicator
         size={'small'}
+        color={colors.light}
         style={styles.activityIndicator}
       />
     );
   }
 
   if (error || !data) {
+    return <></>;
+  }
+
+  if (data?.length < 1) {
     return <></>;
   }
 

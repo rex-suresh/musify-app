@@ -54,7 +54,14 @@ export const PlayerArt = () => {
       activeTrack?.id
     )
   ) {
-    return <></>;
+    return (
+      <FastImage
+        source={defaultImage}
+        key={`player-image-default`}
+        defaultSource={defaultImage}
+        style={styles.image}
+      />
+    );
   }
 
   return (

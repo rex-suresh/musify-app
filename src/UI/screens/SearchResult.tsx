@@ -163,7 +163,10 @@ export const SearchResultScreen = ({
 
   return isLoading ? (
     <View style={styles.errorBox}>
-      <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : 'large'} />
+      <ActivityIndicator
+        size={Platform.OS === 'ios' ? 'small' : 'large'}
+        color={colors.light}
+      />
     </View>
   ) : (
     <>

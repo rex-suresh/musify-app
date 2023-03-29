@@ -32,8 +32,13 @@ const ProgressTimings = ({
 );
 
 export const ProgressBar = () => {
-  const { elapsedTime, totalTime, elapsedTimePrecise } = useTrackDetails();
+  const { elapsedTime, totalTime, elapsedTimePrecise, activeTrack } =
+    useTrackDetails();
   const progress = elapsedTimePrecise / totalTime;
+
+  if (!activeTrack) {
+    return <></>;
+  }
 
   return (
     <View style={[styles.info, styles.progressBar]}>
