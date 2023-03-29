@@ -59,7 +59,10 @@ export const PlayerArt = () => {
         source={defaultImage}
         key={`player-image-default`}
         defaultSource={defaultImage}
-        style={styles.image}
+        style={[
+          styles.image,
+          { borderWidth: 1, borderColor: colors.midContrast },
+        ]}
       />
     );
   }

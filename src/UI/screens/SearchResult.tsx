@@ -16,6 +16,7 @@ import {
   ListSection,
   ListSectionVertical,
 } from '../components/common/ListSection';
+import { NoResults } from '../components/common/NoResults';
 import { TitleText } from '../components/common/Titles';
 import { PlaylistCardProps } from '../components/playlistCard/PlaylistCard.types';
 import { PlaylistCardItem } from '../components/playlistCard/PlaylistSection';
@@ -66,7 +67,7 @@ const AlbumSearchResult = ({
       data={albums}
       renderItem={AlbumCardItem}
       listStyle={styles.horizontalList}
-      sectionStyle={styles.horizontalSection}
+      sectionStyle={styles.horizontalSectionLast}
       subTitle
     />
   );
@@ -154,11 +155,7 @@ export const SearchResultScreen = ({
   }
 
   if (!isLoading && isResponseEmpty(searchData)) {
-    return (
-      <View style={styles.errorBox}>
-        <Text style={styles.responseError}>No results</Text>
-      </View>
-    );
+    return <NoResults />;
   }
 
   return isLoading ? (
@@ -179,11 +176,16 @@ export const SearchResultScreen = ({
 
 const styles = StyleSheet.create({
   horizontalList: {
-    height: 210,
+    height: 220,
   },
   horizontalSection: {
     marginTop: 15,
     paddingTop: 20,
+  },
+  horizontalSectionLast: {
+    marginTop: 15,
+    paddingTop: 20,
+    marginBottom: 15,
   },
   verticalList: {
     maxHeight: 340,

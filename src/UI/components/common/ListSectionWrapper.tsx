@@ -3,6 +3,7 @@ import { ActivityIndicator, StyleSheet } from 'react-native';
 import { useQuery } from 'react-query';
 import { colors } from '../../colors';
 import { ListSection, ListSectionVertical } from './ListSection';
+import { NoResults } from './NoResults';
 
 export type ListSectionWrapperProps = {
   queryName: string;
@@ -78,11 +79,11 @@ export const ListSectionVerticalWrapper = ({
   }
 
   if (error || !data) {
-    return <></>;
+    return <NoResults />;
   }
 
   if (data?.length < 1) {
-    return <></>;
+    return <NoResults />;
   }
 
   setActionData(data);
