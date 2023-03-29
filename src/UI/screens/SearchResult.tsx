@@ -1,4 +1,10 @@
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { Button } from 'react-native-paper';
 import { useQuery } from 'react-query';
 import { colors } from '../colors';
@@ -15,6 +21,7 @@ import { PlaylistCardProps } from '../components/playlistCard/PlaylistCard.types
 import { PlaylistCardItem } from '../components/playlistCard/PlaylistSection';
 import { trackBar } from '../components/trackCard/TrackCard';
 import { TrackCardProps } from '../components/trackCard/TrackCard.types';
+import { sizes } from '../fontSizes';
 
 type SearchResultData = {
   artists: ArtistCardProps[];
@@ -28,6 +35,10 @@ const ArtistSearchResult = ({
 }: {
   searchData: SearchResultData;
 }) => {
+  if (!artists || artists.length < 1) {
+    return <></>;
+  }
+
   return (
     <ListSection
       title={'Artists'}
@@ -45,6 +56,10 @@ const AlbumSearchResult = ({
 }: {
   searchData: SearchResultData;
 }) => {
+  if (!albums || albums.length < 1) {
+    return <></>;
+  }
+
   return (
     <ListSection
       title={'Albums'}
@@ -79,6 +94,9 @@ const TrackSearchResult = ({
 }: {
   searchData: SearchResultData;
 }) => {
+  if (!tracks || tracks.length < 1) {
+    return <></>;
+  }
   return (
     <ListSectionVertical
       title={'Tracks'}
@@ -89,6 +107,16 @@ const TrackSearchResult = ({
       scrollable={false}
       subTitle
     />
+  );
+};
+
+const isResponseEmpty = (response?: SearchResultData) => {
+  if (!response) {
+    return true;
+  }
+
+  return !Object.keys(response).some(
+    (partKey) => response[partKey as keyof SearchResultData].length > 1,
   );
 };
 
@@ -111,35 +139,31 @@ export const SearchResultScreen = ({
       onSettled: onReqComplete,
     },
   );
+  const searchData = data as SearchResultData;
 
   if (isError) {
     return (
-      <>
+      <View style={styles.errorBox}>
         <TitleText
-          style={{ color: 'white' }}
+          style={styles.responseError}
           content="An Error Occurred !"
         />
         <Button onPress={() => refetch()}>Retry</Button>
-      </>
-    );
-  }
-
-  if (!data && !isLoading) {
-    return (
-      <View style={styles.indicator}>
-        <TitleText
-          style={{ color: 'white' }}
-          content={'No results'}
-        />
       </View>
     );
   }
 
-  const searchData = data as SearchResultData;
+  if (!isLoading && isResponseEmpty(searchData)) {
+    return (
+      <View style={styles.errorBox}>
+        <Text style={styles.responseError}>No results</Text>
+      </View>
+    );
+  }
 
   return isLoading ? (
-    <View style={styles.indicator}>
-      <ActivityIndicator size={'small'} />
+    <View style={styles.errorBox}>
+      <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : 'large'} />
     </View>
   ) : (
     <>
@@ -169,6 +193,16 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: colors.transparent,
+    backgroundColor: colors.dark,
+  },
+  errorBox: {
+    height: 100,
+    width: '100%',
+    justifyContent: 'center',
+  },
+  responseError: {
+    color: colors.light,
+    fontSize: sizes.S,
+    textAlign: 'center',
   },
 });
