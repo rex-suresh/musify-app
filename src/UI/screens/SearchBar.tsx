@@ -43,11 +43,13 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     marginTop: 30,
-    padding: 10,
+    maxHeight: 50,
+    paddingLeft: 10,
     width: 320,
     borderWidth: 1,
     borderColor: colors.light,
     borderRadius: 30,
     alignSelf: 'center',
+    justifyContent: 'center',
   },
 });
