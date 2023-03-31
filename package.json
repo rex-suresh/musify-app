@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "buildAPK": "source ./bin/cpEnv.sh && cpProdEnv && cd ./android/ && ./gradlew build && cd .. && ./bin/cpApk.sh",
-    "android": "source ./bin/cpEnv.sh && cpDevEnv && react-native run-android",
-    "ios": "source ./bin/cpEnv.sh && cpDevEnv && react-native run-ios",
-    "start": "source ./bin/cpEnv.sh && cpDevEnv && react-native start",
+    "buildAPK": "ENVFILE=.env.prod && cd ./android/ && ./gradlew build && cd .. && ./bin/cpApk.sh",
+    "android": "ENVFILE=.env.staging && react-native run-android",
+    "ios": "ENVFILE=.env.staging && react-native run-ios",
+    "start": "ENVFILE=.env.staging && react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
