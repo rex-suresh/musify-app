@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "start": "react-native start",
+    "buildAPK": "source ./bin/cpEnv.sh && cpProdEnv && cd ./android/ && ./gradlew build && cd .. && ./bin/cpApk.sh",
+    "android": "source ./bin/cpEnv.sh && cpDevEnv && react-native run-android",
+    "ios": "source ./bin/cpEnv.sh && cpDevEnv && react-native run-ios",
+    "start": "source ./bin/cpEnv.sh && cpDevEnv && react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
@@ -16,6 +17,7 @@
     "axios": "^1.3.4",
     "react": "18.2.0",
     "react-native": "0.71.4",
+    "react-native-config": "^1.5.0",
     "react-native-fast-image": "^8.6.3",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-paper": "^5.4.1",
