@@ -4,13 +4,15 @@ apply plugin: "com.android.application"
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
 
+project.ext.defaultEnvFile = ".env.release"
 project.ext.envConfigFiles = [
-   productiondebug: ".env.prod",
-   productionrelease: ".env.prod",
-   developmentrelease: ".env.devmode",
-   developmentdebug: ".env.devmode",
-   stagingrelease: ".env.staging",
-   stagingdebug: ".env.staging"
+  // debug builds
+   devdebug: ".env.debug",
+   proddebug: ".env.release", // not necessary but useful
+
+  // release builds
+   stagingrelease: ".env.release",
+   prodrelease: ".env.release",
 ]
 
 apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
@@ -148,16 +150,15 @@ android {
 
     flavorDimensions "default"
     productFlavors {
-        production {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.musify"
-            targetSdkVersion rootProject.ext.targetSdkVersion
+        dev {
+            applicationIdSuffix ".dev"
             resValue "string", "build_config_package", "com.musify"
         }
         staging {
-            minSdkVersion rootProject.ext.minSdkVersion
-            applicationId "com.musify.staging"
-            targetSdkVersion rootProject.ext.targetSdkVersion
+            applicationIdSuffix ".staging"
+            resValue "string", "build_config_package", "com.musify"
+        }
+        prod {
             resValue "string", "build_config_package", "com.musify"
         }
     }
@@ -249,7 +250,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            matchingFallbacks = ['debug', 'release']
+            debuggable true
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
