@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../colors';
 import { sizes } from '../fontSizes';
@@ -20,8 +20,8 @@ export const SearchBar = ({
         ref={barRef}
         placeholder="Artists, Tracks, Albums ..."
         onChangeText={onChange}
-        onEndEditing={() => {
-          if (searchKeyword.length > 2) {
+        onSubmitEditing={() => {
+          if (searchKeyword.length > 1) {
             startQuery();
           }
         }}

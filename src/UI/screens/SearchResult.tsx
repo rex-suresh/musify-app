@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Platform, StyleSheet, View } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useQuery } from 'react-query';
 import { colors } from '../colors';
