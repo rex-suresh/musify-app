@@ -13,7 +13,7 @@ export const AlbumCardItem = ({ item }: { item: unknown }): JSX.Element => {
   return <AlbumCard {...props} />;
 };
 
-export const AlbumSection = () => {
+export const AlbumSection = ({ onLoad }: { onLoad: () => void }) => {
   const albumWrapperProps: ListSectionWrapperProps = {
     title: 'Top Albums',
     queryName: queryNames.topAlbums,
@@ -21,6 +21,8 @@ export const AlbumSection = () => {
     query: topAlbums,
     listStyle: styles.albumList,
     sectionStyle: styles.albumSection,
+    showLoad: false,
+    onLoadComplete: onLoad,
   };
 
   return <ListSectionWrapper {...albumWrapperProps} />;

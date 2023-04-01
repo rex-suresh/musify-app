@@ -13,7 +13,7 @@ export const PlaylistCardItem = ({ item }: { item: unknown }) => {
   return <PlaylistCard {...props} />;
 };
 
-export const PlaylistSection = () => {
+export const PlaylistSection = ({ onLoad }: { onLoad: () => void }) => {
   const playlistWrapperProps: ListSectionWrapperProps = {
     title: 'Featured Playlists',
     queryName: queryNames.topPlaylists,
@@ -21,6 +21,8 @@ export const PlaylistSection = () => {
     query: topPlaylists,
     listStyle: styles.playlistList,
     sectionStyle: styles.playlistSection,
+    showLoad: false,
+    onLoadComplete: onLoad,
   };
 
   return <ListSectionWrapper {...playlistWrapperProps} />;

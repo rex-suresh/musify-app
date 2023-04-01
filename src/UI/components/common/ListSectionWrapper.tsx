@@ -15,6 +15,7 @@ export type ListSectionWrapperProps = {
   scrollable?: boolean;
   showLoad?: boolean;
   setActionData?: React.Dispatch<React.SetStateAction<any>>;
+  onLoadComplete?: () => void;
 };
 
 export const ListSectionWrapper = ({
@@ -24,10 +25,16 @@ export const ListSectionWrapper = ({
   itemCard,
   listStyle,
   sectionStyle,
+  onLoadComplete = () => {},
+  showLoad = true,
 }: ListSectionWrapperProps) => {
-  const { isLoading, error, data } = useQuery(queryName, query);
+  const { isLoading, error, data } = useQuery(queryName, query, {
+    onSettled: () => {
+      onLoadComplete();
+    },
+  });
 
-  if (isLoading) {
+  if (isLoading && showLoad) {
     return (
       <ActivityIndicator
         size={'small'}

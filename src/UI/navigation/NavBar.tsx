@@ -16,12 +16,12 @@ const player_icon = require('../images/music-icon.png');
 type Props = { focused: boolean; color: string; size: number };
 
 const icon = (imageData: ImageSourcePropType) => (props: Props) => {
-  const style = { ...styles.icon, opacity: props.focused ? 1 : 0.5 };
+  const visibility = { opacity: props.focused ? 1.2 : 0.4 };
 
   return (
     <Image
       source={imageData}
-      style={style}
+      style={[styles.icon, visibility]}
     />
   );
 };

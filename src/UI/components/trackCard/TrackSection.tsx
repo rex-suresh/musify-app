@@ -13,7 +13,7 @@ const TrackItemCard = ({ item }: { item: unknown }) => {
   return <TrackCard {...props} />;
 };
 
-export const TrackSection = () => {
+export const TrackSection = ({ onLoad }: { onLoad: () => void }) => {
   const trackWrapperProps: ListSectionWrapperProps = {
     title: 'Top Tracks',
     queryName: queryNames.topTracks,
@@ -21,6 +21,8 @@ export const TrackSection = () => {
     query: topTracks,
     listStyle: styles.trackList,
     sectionStyle: styles.trackSection,
+    showLoad: false,
+    onLoadComplete: onLoad,
   };
 
   return <ListSectionWrapper {...trackWrapperProps} />;

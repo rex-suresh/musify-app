@@ -13,7 +13,7 @@ export const ArtistCardItem = ({ item }: { item: unknown }) => {
   return <ArtistCard {...data} />;
 };
 
-export const ArtistSection = () => {
+export const ArtistSection = ({ onLoad }: { onLoad: () => void }) => {
   const artistWrapperProps: ListSectionWrapperProps = {
     title: 'Top Artists',
     queryName: queryNames.topArtists,
@@ -21,6 +21,8 @@ export const ArtistSection = () => {
     query: topArtists,
     listStyle: styles.artistList,
     sectionStyle: styles.artistSection,
+    showLoad: false,
+    onLoadComplete: onLoad,
   };
 
   return <ListSectionWrapper {...artistWrapperProps} />;
