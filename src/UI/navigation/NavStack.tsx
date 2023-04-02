@@ -5,9 +5,11 @@ import { AlbumDetailPage } from '../screens/AlbumDetailPage';
 import { ArtistDetailPage } from '../screens/ArtistDetailPage';
 import { HomeScreen } from '../screens/HomeScreen';
 import { PlaylistDetailPage } from '../screens/PlaylistDetailPage';
+import { useNotificationDeepLink } from '../../deeplinking/notificationDeeplink';
 
 const NavStack = createNativeStackNavigator();
 export const SubScreenNavigator = () => {
+  useNotificationDeepLink();
   return (
     <NavStack.Navigator
       initialRouteName={SCREENS.HOME}

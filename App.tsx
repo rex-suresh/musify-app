@@ -33,8 +33,8 @@ const App = () => {
     TrackPlayer.updateOptions({
       alwaysPauseOnInterruption: true,
       android: {
-        appKilledPlaybackBehavior:
-          AppKilledPlaybackBehavior.StopPlaybackAndRemoveNotification,
+        appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
+        // To show notification we need it as a separate process.
         alwaysPauseOnInterruption: true,
       },
       capabilities: playerCapabilities,
