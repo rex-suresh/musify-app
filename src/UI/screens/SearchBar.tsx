@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     marginTop: 30,
-    maxHeight: 50,
+    height: 50,
     paddingLeft: 10,
     width: 320,
     borderWidth: 1,
