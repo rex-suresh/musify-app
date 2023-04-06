@@ -7,7 +7,7 @@ import { PlayerScreen } from '../screens/PlayerScreen';
 import { SearchScreen } from '../screens/SearchScreen';
 import { theme } from '../theme';
 import { CustomTabBar } from './CustomBottomTabBar';
-import { SubScreenNavigator } from './NavStack';
+import { HomeScreenNavigator, SearchScreenNavigator } from './NavStack';
 
 const home_icon = require('../images/home-icon.png');
 const search_icon = require('../images/search-icon.png');
@@ -40,12 +40,12 @@ export const BottomBarScreenNavigator = () => {
         tabBar={(props) => <CustomTabBar {...props} />}>
         <NavBar.Screen
           name={SCREENS.ROOT}
-          component={SubScreenNavigator}
+          component={HomeScreenNavigator}
           options={{ tabBarIcon: icon(home_icon) }}
         />
         <NavBar.Screen
           name={SCREENS.SEARCH}
-          component={SearchScreen}
+          component={SearchScreenNavigator}
           options={{ tabBarIcon: icon(search_icon) }}
         />
         <NavBar.Screen

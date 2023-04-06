@@ -6,9 +6,11 @@ import { ArtistDetailPage } from '../screens/ArtistDetailPage';
 import { HomeScreen } from '../screens/HomeScreen';
 import { PlaylistDetailPage } from '../screens/PlaylistDetailPage';
 import { useNotificationDeepLink } from '../../deeplinking/notificationDeeplink';
+import { SearchScreen } from '../screens/SearchScreen';
 
 const NavStack = createNativeStackNavigator();
-export const SubScreenNavigator = () => {
+
+export const HomeScreenNavigator = () => {
   useNotificationDeepLink();
   return (
     <NavStack.Navigator
@@ -19,18 +21,49 @@ export const SubScreenNavigator = () => {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
+      <NavStack.Group>
+        <NavStack.Screen
+          name={SCREENS.ARTIST_SCREEN}
+          component={ArtistDetailPage}
+        />
+        <NavStack.Screen
+          name={SCREENS.ALBUM_SCREEN}
+          component={AlbumDetailPage}
+        />
+        <NavStack.Screen
+          name={SCREENS.PLAYLIST_SCREEN}
+          component={PlaylistDetailPage}
+        />
+      </NavStack.Group>
+    </NavStack.Navigator>
+  );
+};
+
+export const SearchScreenNavigator = () => {
+  useNotificationDeepLink();
+  return (
+    <NavStack.Navigator
+      initialRouteName={SCREENS.SEARCH}
+      screenOptions={{ headerShown: true, animation: 'fade_from_bottom' }}>
       <NavStack.Screen
-        name={SCREENS.ARTIST_SCREEN}
-        component={ArtistDetailPage}
+        name={SCREENS.SEARCH}
+        component={SearchScreen}
+        options={{ headerShown: false }}
       />
-      <NavStack.Screen
-        name={SCREENS.ALBUM_SCREEN}
-        component={AlbumDetailPage}
-      />
-      <NavStack.Screen
-        name={SCREENS.PLAYLIST_SCREEN}
-        component={PlaylistDetailPage}
-      />
+      <NavStack.Group>
+        <NavStack.Screen
+          name={SCREENS.ARTIST_SCREEN}
+          component={ArtistDetailPage}
+        />
+        <NavStack.Screen
+          name={SCREENS.ALBUM_SCREEN}
+          component={AlbumDetailPage}
+        />
+        <NavStack.Screen
+          name={SCREENS.PLAYLIST_SCREEN}
+          component={PlaylistDetailPage}
+        />
+      </NavStack.Group>
     </NavStack.Navigator>
   );
 };
