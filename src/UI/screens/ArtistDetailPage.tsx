@@ -15,7 +15,8 @@ export const ArtistDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
   return (
     <ScrollView
       style={styles.page}
-      nestedScrollEnabled>
+      nestedScrollEnabled
+      showsVerticalScrollIndicator={false}>
       <ArtistFigure
         id={id}
         url={image}

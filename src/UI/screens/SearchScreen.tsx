@@ -21,7 +21,8 @@ export const SearchScreen = () => {
   return (
     <ScrollView
       keyboardDismissMode="on-drag"
-      alwaysBounceVertical={false}>
+      alwaysBounceVertical={false}
+      showsVerticalScrollIndicator={false}>
       <PageTitle title="Search" />
       <SearchBar
         barRef={searchBarRef}

@@ -13,9 +13,11 @@ export const Loading = ({ size = 'small' }: { size?: 'large' | 'small' }) => (
 
 const styles = StyleSheet.create({
   indicatorContainer: {
-    height: 450,
+    position: 'absolute',
+    height: '100%',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    zIndex: 10,
   },
 });

@@ -9,7 +9,9 @@ export const AlbumDetailPage = ({ route }: ScreenPropsType): JSX.Element => {
   const { id, image, name, citation } = route.params as DetailPageProps;
 
   return (
-    <ScrollView style={styles.page}>
+    <ScrollView
+      style={styles.page}
+      showsVerticalScrollIndicator={false}>
       <AlbumFigure
         id={id}
         url={image}

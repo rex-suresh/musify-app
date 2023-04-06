@@ -16,7 +16,10 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.homeScreen}>
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.homeScreenScroll}
+        centerContent>
         <PageTitle title="Home" />
         {loading && <Loading size="large" />}
         <PlaylistSection onLoad={loadingComplete} />
@@ -31,5 +34,8 @@ export const HomeScreen = () => {
 const styles = StyleSheet.create({
   homeScreen: {
     height: '100%',
+  },
+  homeScreenScroll: {
+    minHeight: '100%',
   },
 });
