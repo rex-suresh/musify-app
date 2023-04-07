@@ -6,6 +6,7 @@ import TrackPlayer, {
 } from 'react-native-track-player';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { BottomBarScreenNavigator } from './src/UI/navigation/NavBar';
+import { QueueContextProvider } from './src/context/CurrentContext';
 
 const waitBeforeRefetch = 6 * 60 * 60 * 1000;
 
@@ -53,7 +54,9 @@ const App = () => {
             showHideTransition={'fade'}
             barStyle={'light-content'}
           />
-          <BottomBarScreenNavigator />
+          <QueueContextProvider>
+            <BottomBarScreenNavigator />
+          </QueueContextProvider>
         </SafeAreaView>
       </View>
     </QueryClientProvider>

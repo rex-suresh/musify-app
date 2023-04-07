@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useContext } from 'react';
 import { SCREENS } from '../routes';
 import { AlbumDetailPage } from '../screens/AlbumDetailPage';
 import { ArtistDetailPage } from '../screens/ArtistDetailPage';
@@ -7,14 +7,18 @@ import { HomeScreen } from '../screens/HomeScreen';
 import { PlaylistDetailPage } from '../screens/PlaylistDetailPage';
 import { useNotificationDeepLink } from '../../deeplinking/notificationDeeplink';
 import { SearchScreen } from '../screens/SearchScreen';
+import { QueueContext } from '../../context/CurrentContext';
 
 const NavStack = createNativeStackNavigator();
 
 export const HomeScreenNavigator = () => {
+  const { clearContextQueue } = useContext(QueueContext);
+
   useNotificationDeepLink();
   return (
     <NavStack.Navigator
       initialRouteName={SCREENS.HOME}
+      screenListeners={{ beforeRemove: clearContextQueue }}
       screenOptions={{ headerShown: true, animation: 'fade_from_bottom' }}>
       <NavStack.Screen
         name={SCREENS.HOME}
@@ -40,10 +44,13 @@ export const HomeScreenNavigator = () => {
 };
 
 export const SearchScreenNavigator = () => {
+  const { clearContextQueue } = useContext(QueueContext);
   useNotificationDeepLink();
+
   return (
     <NavStack.Navigator
       initialRouteName={SCREENS.SEARCH_SCREEN}
+      screenListeners={{ beforeRemove: clearContextQueue }}
       screenOptions={{ headerShown: true, animation: 'fade_from_bottom' }}>
       <NavStack.Screen
         name={SCREENS.SEARCH_SCREEN}

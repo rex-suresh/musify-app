@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import { useQuery } from 'react-query';
 import { colors } from '../../colors';
 import { ListSection, ListSectionVertical } from './ListSection';
 import { NoResults } from './NoResults';
+import { QueueContext } from '../../../context/CurrentContext';
+import { mapToTrack } from './mappers';
+import { Track } from 'react-native-track-player';
 
 export type ListSectionWrapperProps = {
   queryName: string;
@@ -14,7 +17,6 @@ export type ListSectionWrapperProps = {
   sectionStyle: Record<string, unknown>;
   scrollable?: boolean;
   showLoad?: boolean;
-  setActionData?: React.Dispatch<React.SetStateAction<any>>;
   onLoadComplete?: () => void;
 };
 
@@ -71,9 +73,16 @@ export const ListSectionVerticalWrapper = ({
   listStyle,
   sectionStyle,
   scrollable,
-  setActionData = () => {},
 }: ListSectionWrapperProps) => {
-  const { isLoading, error, data } = useQuery(queryName, query);
+  const { setContextQueue } = useContext(QueueContext);
+  const { isLoading, error, data } = useQuery(queryName, query, {
+    onSettled: (data) => {
+      if (data) {
+        const tracks: Track[] = data?.map(mapToTrack) || [];
+        setContextQueue(tracks);
+      }
+    },
+  });
 
   if (isLoading) {
     return (
@@ -93,7 +102,6 @@ export const ListSectionVerticalWrapper = ({
     return <NoResults />;
   }
 
-  setActionData(data);
   return (
     <ListSectionVertical
       title={title}
