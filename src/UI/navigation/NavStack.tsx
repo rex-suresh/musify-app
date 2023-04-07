@@ -43,10 +43,10 @@ export const SearchScreenNavigator = () => {
   useNotificationDeepLink();
   return (
     <NavStack.Navigator
-      initialRouteName={SCREENS.SEARCH}
+      initialRouteName={SCREENS.SEARCH_SCREEN}
       screenOptions={{ headerShown: true, animation: 'fade_from_bottom' }}>
       <NavStack.Screen
-        name={SCREENS.SEARCH}
+        name={SCREENS.SEARCH_SCREEN}
         component={SearchScreen}
         options={{ headerShown: false }}
       />

@@ -10,6 +10,7 @@ import { ActivityIndicator } from 'react-native';
 import TrackPlayer, {
   RepeatMode,
   State,
+  Track,
   usePlaybackState,
 } from 'react-native-track-player';
 import { colors } from '../../colors';
@@ -25,7 +26,6 @@ const queue = require('../../images/list-button.png');
 
 const play = () => {
   TrackPlayer.play();
-  ToastAndroid.show('Playing', 50);
 };
 
 const pause = () => {
@@ -85,13 +85,52 @@ export const PlayPause = () => {
   );
 };
 
-const Shuffle = () => (
-  <IconButton
-    onPress={() => {}}
-    style={styles.iconSmall}
-    icon={shuffleButton}
-  />
-);
+const shuffleQueue = async (): Promise<Track[]> => {
+  const [_, ...queue] = await TrackPlayer.getQueue();
+  const shuffledTracks = [...queue].sort(() => (Math.random() > 0.5 ? -1 : 1));
+
+  await TrackPlayer.removeUpcomingTracks();
+  TrackPlayer.add(shuffledTracks);
+
+  return queue;
+};
+
+const unShuffleQueue = async (queue: Track[]) => {
+  await TrackPlayer.removeUpcomingTracks();
+  TrackPlayer.add(queue);
+};
+
+const Shuffle = () => {
+  const [randomize, setRandomize] = useState(false);
+  const [trackList, setTrackList] = useState<Track[]>([]);
+
+  useEffect(() => {
+    if (randomize) {
+      shuffleQueue().then((tracks) => {
+        setTrackList(tracks);
+      });
+      return;
+    }
+
+    unShuffleQueue(trackList);
+  }, [randomize]);
+
+  const random = () => {
+    setRandomize(true);
+  };
+
+  const queue = () => {
+    setRandomize(false);
+  };
+
+  return (
+    <IconButton
+      onPress={randomize ? queue : random}
+      style={[styles.iconSmall, randomize ? styles.active : styles.inActive]}
+      icon={shuffleButton}
+    />
+  );
+};
 
 const repeatCycle = [RepeatMode.Queue, RepeatMode.Track, RepeatMode.Off];
 
@@ -99,7 +138,6 @@ const Repeat = () => {
   const [repeatIndex, setRepeatIndex] = useState(0);
   const [repeatSelected, setRepeatSelected] = useState(RepeatMode.Off);
   const icon = repeatSelected === RepeatMode.Track ? repeatOne : repeatButton;
-  const iconVisibility = repeatSelected === RepeatMode.Off ? 0.5 : 1;
 
   const repeat = () => {
     const repeatMode = repeatCycle[repeatIndex];
@@ -115,7 +153,10 @@ const Repeat = () => {
   return (
     <IconButton
       onPress={repeat}
-      style={[styles.iconSmall, { opacity: iconVisibility }]}
+      style={[
+        styles.iconSmall,
+        repeatSelected === RepeatMode.Off ? styles.inActive : styles.active,
+      ]}
       icon={icon}
     />
   );
@@ -167,5 +208,11 @@ export const styles = StyleSheet.create({
     width: 25,
     aspectRatio: 1,
     padding: 10,
+  },
+  active: {
+    opacity: 1,
+  },
+  inActive: {
+    opacity: 0.5,
   },
 });

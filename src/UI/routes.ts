@@ -13,6 +13,7 @@ export enum SCREENS {
   HOME = 'Home',
   SEARCH = 'Search',
   PLAYER = 'Player',
+  SEARCH_SCREEN = 'Search Screen',
   ARTIST_SCREEN = 'Artist Screen',
   ALBUM_SCREEN = 'Album Screen',
   PLAYLIST_SCREEN = 'Playlist Screen',
@@ -22,17 +23,4 @@ export enum SCREENS {
 export type ScreenPropsType = {
   route: RouteProp<ParamListBase, SCREENS>;
   navigation: any;
-};
-
-export const endScreens: Record<
-  SCREENS,
-  (props: ScreenPropsType) => JSX.Element
-> = {
-  [SCREENS.HOME]: HomeScreen,
-  [SCREENS.PLAYER]: PlayerScreen,
-  [SCREENS.SEARCH]: SearchScreen,
-  [SCREENS.ARTIST_SCREEN]: ArtistDetailPage,
-  [SCREENS.ALBUM_SCREEN]: AlbumDetailPage,
-  [SCREENS.PLAYLIST_SCREEN]: PlaylistDetailPage,
-  [SCREENS.ROOT]: BottomBarScreenNavigator,
 };
