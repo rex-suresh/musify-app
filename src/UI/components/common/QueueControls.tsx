@@ -42,6 +42,12 @@ const QueueButton = () => {
 };
 
 export const QueueControls = () => {
+  const { hasContent } = useContext(QueueContext);
+
+  if (!hasContent) {
+    return <></>;
+  }
+
   return (
     <View style={styles.controls}>
       <PlayButton />
@@ -89,7 +95,6 @@ const styles = StyleSheet.create({
   queueIcon: {
     height: '100%',
     aspectRatio: 1,
-    borderWidth: 1,
   },
   queueButton: {
     backgroundColor: colors.darkerContrast,

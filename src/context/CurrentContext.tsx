@@ -7,10 +7,12 @@ export const QueueContext = createContext({
   setContextQueue: (_queue: Track[]) => {},
   clearContextQueue: () => {},
   actions: { play: () => {}, queue: () => {} },
+  hasContent: false,
 });
 
 export const QueueContextProvider = ({ children }: { children: ReactNode }) => {
   const [contextQueue, setQueue] = useState<Track[]>([]);
+  const [hasContent, setHasContent] = useState(false);
 
   const clearContextQueue = () => {
     setContextQueue([]);
@@ -20,9 +22,18 @@ export const QueueContextProvider = ({ children }: { children: ReactNode }) => {
     setQueue(queue);
   };
 
+  useEffect(() => {
+    if (contextQueue.length > 0) {
+      setHasContent(true);
+      return;
+    }
+    setHasContent(false);
+  }, [contextQueue]);
+
   return (
     <QueueContext.Provider
       value={{
+        hasContent,
         contextQueue,
         setContextQueue,
         clearContextQueue,
