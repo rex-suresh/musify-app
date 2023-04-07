@@ -7,6 +7,7 @@ import {
   ListSectionWrapperProps,
 } from '../common/ListSectionWrapper';
 import { trackBar } from '../trackCard/TrackCard';
+import { QueueControls } from '../common/QueueControls';
 
 export const AlbumTrackList = ({ id }: { id: string }) => {
   const props: ListSectionWrapperProps = {
@@ -21,6 +22,7 @@ export const AlbumTrackList = ({ id }: { id: string }) => {
 
   return (
     <View style={styles.listContainer}>
+      <QueueControls />
       <ListSectionVerticalWrapper {...props} />
     </View>
   );

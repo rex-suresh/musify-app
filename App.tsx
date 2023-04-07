@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StatusBar, StyleSheet, View } from 'react-native';
 import TrackPlayer, {
   AppKilledPlaybackBehavior,
@@ -29,21 +29,30 @@ const playerCapabilities = [
 ];
 
 const App = () => {
+  const [playerInit, setPlayerInit] = useState(false);
+
   useEffect(() => {
-    TrackPlayer.setupPlayer({ backBuffer: 1.5, autoHandleInterruptions: true });
-    TrackPlayer.updateOptions({
-      alwaysPauseOnInterruption: true,
-      android: {
-        appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
-        // To show notification we need it as a separate process.
+    if (!playerInit) {
+      setPlayerInit(true);
+
+      TrackPlayer.setupPlayer({
+        backBuffer: 1.5,
+        autoHandleInterruptions: true,
+      });
+      TrackPlayer.updateOptions({
         alwaysPauseOnInterruption: true,
-      },
-      capabilities: playerCapabilities,
-      compactCapabilities: playerCapabilities,
-      notificationCapabilities: playerCapabilities,
-      backwardJumpInterval: 1000,
-      forwardJumpInterval: 1000,
-    });
+        android: {
+          appKilledPlaybackBehavior: AppKilledPlaybackBehavior.PausePlayback,
+          // To show notification we need it as a separate process.
+          alwaysPauseOnInterruption: true,
+        },
+        capabilities: playerCapabilities,
+        compactCapabilities: playerCapabilities,
+        notificationCapabilities: playerCapabilities,
+        backwardJumpInterval: 1000,
+        forwardJumpInterval: 1000,
+      });
+    }
   }, []);
 
   return (

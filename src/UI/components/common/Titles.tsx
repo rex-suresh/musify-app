@@ -7,6 +7,10 @@ export const SectionContentTitle = ({ title }: { title: string }) => (
   <Text style={styles.sectionTitle}>{title}</Text>
 );
 
+export const SectionContentTitleSmall = ({ title }: { title: string }) => (
+  <Text style={styles.sectionTitleSmall}>{title}</Text>
+);
+
 export const SubSectionContentTitle = ({ title }: { title: string }) => (
   <Text style={styles.subSectionTitle}>{title}</Text>
 );
@@ -57,6 +61,14 @@ const styles = StyleSheet.create({
     color: colors.midContrast,
     fontSize: sizes.L,
     fontWeight: '700',
+    padding: 8,
+    paddingLeft: 10,
+    marginBottom: 15,
+  },
+  sectionTitleSmall: {
+    color: colors.midContrast,
+    fontSize: sizes.M,
+    fontWeight: '600',
     padding: 8,
     paddingLeft: 10,
     marginBottom: 15,

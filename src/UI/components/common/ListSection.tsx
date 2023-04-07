@@ -1,6 +1,10 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { SectionContentTitle, SubSectionContentTitleRight } from './Titles';
+import {
+  SectionContentTitle,
+  SectionContentTitleSmall,
+  SubSectionContentTitleRight,
+} from './Titles';
 
 const idAsKey = (props: unknown): string => {
   const { id } = props as { id: string };
@@ -68,7 +72,7 @@ export const ListSectionVertical = ({
         (subTitle ? (
           <SubSectionContentTitleRight title={title} />
         ) : (
-          <SectionContentTitle title={title} />
+          <SectionContentTitleSmall title={title} />
         ))}
       <FlatList
         data={data}

@@ -10,6 +10,7 @@ type part =
   | 'darkContrast'
   | 'greyBd'
   | 'greyBg'
+  | 'darkerContrast'
   | 'secondary';
 
 export const colors: Record<part, string> = {
@@ -22,6 +23,7 @@ export const colors: Record<part, string> = {
   lowContrast: 'rgb(200,200,200)',
   veryLowContrast: 'rgb(150,150,150)',
   darkContrast: 'rgb(50,50,50)',
+  darkerContrast: 'rgb(32,32,32)',
   greyBd: 'rgb(120,120,120)',
   greyBg: '#111111',
   secondary: 'rgb(200,50,50)',

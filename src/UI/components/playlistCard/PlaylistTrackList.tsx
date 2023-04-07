@@ -6,6 +6,7 @@ import {
   ListSectionWrapperProps,
 } from '../common/ListSectionWrapper';
 import { trackBar } from '../trackCard/TrackCard';
+import { QueueControls } from '../common/QueueControls';
 
 export const PlaylistTrackList = ({ id }: { id: string }) => {
   const props: ListSectionWrapperProps = {
@@ -17,7 +18,12 @@ export const PlaylistTrackList = ({ id }: { id: string }) => {
     sectionStyle: styles.section,
   };
 
-  return <ListSectionVerticalWrapper {...props} />;
+  return (
+    <>
+      <QueueControls />
+      <ListSectionVerticalWrapper {...props} />
+    </>
+  );
 };
 
 const styles = StyleSheet.create({

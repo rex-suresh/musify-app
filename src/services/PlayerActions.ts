@@ -31,13 +31,17 @@ export const justPlay = (item: TrackCardProps) => {
 };
 
 export const addTracksToQueue = (tracks: Track[]) => {
-  TrackPlayer.add(tracks);
+  tracks.forEach((track) => {
+    TrackPlayer.add(track);
+  });
 };
 
 export const playTracks = (tracks: Track[]) => {
   TrackPlayer.reset();
   TrackPlayer.removeUpcomingTracks();
-  TrackPlayer.add(tracks);
+  tracks.forEach((track) => {
+    TrackPlayer.add(track);
+  });
   TrackPlayer.play();
 
   ToastAndroid.show('Playing queue', 50);
