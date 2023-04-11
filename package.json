@@ -1,6 +1,7 @@
 {
   "name": "musify",
-  "version": "0.0.2",
+  "version": "1.0.1",
+  "build": "1",
   "private": true,
   "scripts": {
     "android": "react-native run-android --mode=devdebug",
