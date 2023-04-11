@@ -1,4 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+import groovy.json.JsonSlurper
+
 
 buildscript {
     ext {
@@ -48,5 +50,26 @@ allprojects {
         }
         google()
         maven { url 'https://www.jitpack.io' }
+    }
+}
+
+def getPackageBuildVersion() {
+  def packageFile = new File("$rootDir/../package.json")
+  def packageJson = new JsonSlurper().parseText(packageFile.text)
+
+  return packageJson["version"]
+}
+
+def getPackageBuildNumber() {
+  def packageFile = new File("$rootDir/../package.json")
+  def packageJson = new JsonSlurper().parseText(packageFile.text)
+
+  return packageJson["build"]
+}
+
+subprojects {
+    ext {
+        buildVersion = getPackageBuildVersion()
+        buildNumber = getPackageBuildNumber()
     }
 }
